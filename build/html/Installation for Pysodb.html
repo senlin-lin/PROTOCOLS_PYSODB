@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation for Pysodb &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Alignment/Alignment.html">Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deconvolution/Deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation for Pysodb</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Installation for Pysodb.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Installation-for-Pysodb">
+<h1>Installation for Pysodb<a class="headerlink" href="#Installation-for-Pysodb" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates how to install the pysodb package in a conda environment.</p>
+<section id="Installing-softwares">
+<h2>Installing softwares<a class="headerlink" href="#Installing-softwares" title="此标题的永久链接"></a></h2>
+<section id="1.-The-first-step-is-to-install-Anaconda-and-Visual-Studio-Code-in-advance.">
+<h3>1. The first step is to install Anaconda and Visual Studio Code in advance.<a class="headerlink" href="#1.-The-first-step-is-to-install-Anaconda-and-Visual-Studio-Code-in-advance." title="此标题的永久链接"></a></h3>
+<p>Reference tutorials can be found at <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">https://docs.anaconda.com/anaconda/install/index.html</a> and <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/tasks/integration/vscode/">https://docs.anaconda.com/anaconda/user-guide/tasks/integration/vscode/</a></p>
+</section>
+<section id="2.-Launch-Visual-Studio-Code-and-open-a-terminal-window.">
+<h3>2. Launch Visual Studio Code and open a terminal window.<a class="headerlink" href="#2.-Launch-Visual-Studio-Code-and-open-a-terminal-window." title="此标题的永久链接"></a></h3>
+<p>Henceforth, various packages or modules will be installed via the command line</p>
+</section>
+</section>
+<section id="Installation-pysobd">
+<h2>Installation pysobd<a class="headerlink" href="#Installation-pysobd" title="此标题的永久链接"></a></h2>
+<section id="3.-Select-the-installation-path-and-open-it">
+<h3>3. Select the installation path and open it<a class="headerlink" href="#3.-Select-the-installation-path-and-open-it" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="4.-Clone-pycodb-code">
+<h3>4. Clone pycodb code<a class="headerlink" href="#4.-Clone-pycodb-code" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">TencentAILabHealthcare</span><span class="o">/</span><span class="n">pysodb</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="5.-Open-the-pycodb-directory">
+<h3>5. Open the pycodb directory<a class="headerlink" href="#5.-Open-the-pycodb-directory" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">pysodb</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="6.-Create-a-conda-environment">
+<h3>6. Create a conda environment<a class="headerlink" href="#6.-Create-a-conda-environment" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">environment_name</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">file</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="7.-Activate-a-conda-environment">
+<h3>7. Activate a conda environment<a class="headerlink" href="#7.-Activate-a-conda-environment" title="此标题的永久链接"></a></h3>
+<p>If the conda environment is used on the terminal, run the following command to activate it:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">environment_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="8.-Install-a-pysodb-package-from-source-code">
+<h3>8. Install a pysodb package from source code<a class="headerlink" href="#8.-Install-a-pysodb-package-from-source-code" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="9.-Install-pysodb-as-a-dependency-or-third-party-package-with-pip">
+<h3>9. Install pysodb as a dependency or third-party package with pip<a class="headerlink" href="#9.-Install-pysodb-as-a-dependency-or-third-party-package-with-pip" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">third</span><span class="o">-</span><span class="n">party</span> <span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Usage">
+<h2>Usage<a class="headerlink" href="#Usage" title="此标题的永久链接"></a></h2>
+<p>The next steps demonstrate usage of the pycodb package via Jupyter.</p>
+<p>“Select Kernel” through jupyter, and then select the python environment</p>
+<section id="import-pysodb-package">
+<h3>import pysodb package<a class="headerlink" href="#import-pysodb-package" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Initialization">
+<h3>Initialization<a class="headerlink" href="#Initialization" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Get-the-list-of-datasets">
+<h3>Get the list of datasets<a class="headerlink" href="#Get-the-list-of-datasets" title="此标题的永久链接"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_list</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">list_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Get-the-list-of-datasets-with-specific-category.">
+<h3>Get the list of datasets with specific category.<a class="headerlink" href="#Get-the-list-of-datasets-with-specific-category." title="此标题的永久链接"></a></h3>
+<p>categories [“Spatial Transcriptomics”, “Spatial Proteomics”, “Spatial Metabolomics”, “Spatial Genomics”, “Spatial MultiOmics”]</p>
+<p>And, take the example of “Spatial Transcriptomics”:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_list</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">list_dataset_by_category</span><span class="p">(</span><span class="s2">&quot;Spatial Transcriptomics&quot;</span><span class="p">)</span>
+<span class="n">dataset_list</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;maynard2021trans&#39;,
+ &#39;codeluppi2018spatial&#39;,
+ &#39;xia2022the&#39;,
+ &#39;backdahl2021spatial&#39;,
+ &#39;eng2019transcriptome&#39;,
+ &#39;berglund2018spatial&#39;,
+ &#39;Sanchez2021A&#39;,
+ &#39;thrane2018spatially&#39;,
+ &#39;Dhainaut2022Spatial&#39;,
+ &#39;Buzzi2022Spatial&#39;,
+ &#39;Gouin2021An&#39;,
+ &#39;Wang2018Three_1k&#39;,
+ &#39;wang2021easi&#39;,
+ &#39;lohoff2021integration&#39;,
+ &#39;chen2020spatial&#39;,
+ &#39;wang2022high&#39;,
+ &#39;Sun2022Excitatory&#39;,
+ &#39;Garcia2021Mapping&#39;,
+ &#39;ji2020multimodal&#39;,
+ &#39;Dixon2022Spatially&#39;,
+ &#39;Zeng2023Integrative&#39;,
+ &#39;asp2019a&#39;,
+ &#39;seqFISH_VISp&#39;,
+ &#39;Wang2018three&#39;,
+ &#39;rodriques2019slide&#39;,
+ &#39;chen2021decoding&#39;,
+ &#39;stickels2020highly&#39;,
+ &#39;liu2022spatiotemporal&#39;,
+ &#39;Alon2021Expansion&#39;,
+ &#39;Allen2022Molecular_lps&#39;,
+ &#39;chen2022spatiotemporal_compre_20&#39;,
+ &#39;carlberg2019exploring&#39;,
+ &#39;zhang2021spatially&#39;,
+ &#39;Marshall2022High_human&#39;,
+ &#39;Vickovic2019high_update&#39;,
+ &#39;scispace&#39;,
+ &#39;hunter2021spatially&#39;,
+ &#39;Kadur2022Human&#39;,
+ &#39;fawkner2021spatiotemporal&#39;,
+ &#39;stahl2016visualization&#39;,
+ &#39;ortiz2020molecular&#39;,
+ &#39;Vickovic2019high&#39;,
+ &#39;Biermann2022Dissecting&#39;,
+ &#39;DARTFISH&#39;,
+ &#39;Marshall2022High_mouse&#39;,
+ &#39;Allen2022Molecular_aging&#39;,
+ &#39;Merfish_Visp&#39;,
+ &#39;Barkley2022Cancer&#39;,
+ &#39;gracia2021genome&#39;,
+ &#39;mantri2021spatiotemporal&#39;,
+ &#39;moffitt2018molecular&#39;,
+ &#39;Visium_Allen&#39;,
+ &#39;Wu2022spatial&#39;,
+ &#39;chen2022spatiotemporal&#39;,
+ &#39;kvastad2021the&#39;,
+ &#39;asp2017spatial&#39;,
+ &#39;wei2022single&#39;,
+ &#39;Pascual2021Dietary&#39;,
+ &#39;Fang2022Conservation&#39;,
+ &#39;Navarro2020Spatial&#39;,
+ &#39;Joglekar2021A&#39;,
+ &#39;Konieczny2022Interleukin&#39;,
+ &#39;guilliams2022spatial&#39;,
+ &#39;Misra2021Characterizing&#39;,
+ &#39;bergenstrahle2021super&#39;,
+ &#39;Tower2021Spatial&#39;,
+ &#39;he2020integrating&#39;,
+ &#39;Juntaro2022MEK&#39;,
+ &#39;Booeshaghi2021Isoform&#39;,
+ &#39;Zhang2023Amolecularly_rawcount&#39;,
+ &#39;Shi2022Spatial&#39;,
+ &#39;parigi2022the&#39;,
+ &#39;Fu2021Unsupervised&#39;,
+ &#39;Kleshchevnikov2022Cell2location&#39;,
+ &#39;xia2019spatial&#39;,
+ &#39;maniatis2019spatiotemporal&#39;,
+ &#39;Melo2021Integrating&#39;,
+ &#39;Shah2016InSitu&#39;,
+ &#39;Sun2021Integrating&#39;,
+ &#39;chen2021dissecting&#39;,
+ &#39;Ratz2022Clonal&#39;,
+ &#39;hildebrandt2021spatial&#39;,
+ &#39;Borm2022Scalable&#39;,
+ &#39;moncada2020integrating&#39;,
+ &#39;Lebrigand2022The&#39;,
+ &#39;10x&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Load-a-specific-experiment">
+<h3>Load a specific experiment<a class="headerlink" href="#Load-a-specific-experiment" title="此标题的永久链接"></a></h3>
+<p>Loading a specific experiment needs two arguments, dataset_name and experiment_name.</p>
+<p>Two arguments are available at <a class="reference external" href="https://gene.ai.tencent.com/SpatialOmics/">https://gene.ai.tencent.com/SpatialOmics/</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="s1">&#39;hunter2021spatially&#39;</span><span class="p">,</span><span class="s1">&#39;sample_B&#39;</span><span class="p">)</span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[sample_B] in dataset[hunter2021spatially]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+AnnData object with n_obs × n_vars = 2179 × 32268
+    obs: &#39;col_0&#39;, &#39;leiden&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;
+    uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;
+    obsm: &#39;X_pca&#39;, &#39;X_umap&#39;, &#39;spatial&#39;, &#39;spatial_pixel&#39;, &#39;spatial_real&#39;
+    varm: &#39;PCs&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;, &#39;spatial_connectivities&#39;, &#39;spatial_distances&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="Load-a-specific-dataset">
+<h3>Load a specific dataset<a class="headerlink" href="#Load-a-specific-dataset" title="此标题的永久链接"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adataset</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;hunter2021spatially&#39;</span><span class="p">)</span>
+<span class="n">adataset</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[sample_A] in dataset[hunter2021spatially]
+load experiment[sample_C] in dataset[hunter2021spatially]
+load experiment[sample_B] in dataset[hunter2021spatially]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;sample_A&#39;: AnnData object with n_obs × n_vars = 2425 × 32268
+     obs: &#39;col_0&#39;, &#39;leiden&#39;
+     var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;
+     uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;
+     obsm: &#39;X_pca&#39;, &#39;X_umap&#39;, &#39;spatial&#39;, &#39;spatial_pixel&#39;, &#39;spatial_real&#39;
+     varm: &#39;PCs&#39;
+     obsp: &#39;connectivities&#39;, &#39;distances&#39;, &#39;spatial_connectivities&#39;, &#39;spatial_distances&#39;,
+ &#39;sample_C&#39;: AnnData object with n_obs × n_vars = 2677 × 32268
+     obs: &#39;col_0&#39;, &#39;leiden&#39;
+     var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;
+     uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;
+     obsm: &#39;X_pca&#39;, &#39;X_umap&#39;, &#39;spatial&#39;, &#39;spatial_pixel&#39;, &#39;spatial_real&#39;
+     varm: &#39;PCs&#39;
+     obsp: &#39;connectivities&#39;, &#39;distances&#39;, &#39;spatial_connectivities&#39;, &#39;spatial_distances&#39;,
+ &#39;sample_B&#39;: AnnData object with n_obs × n_vars = 2179 × 32268
+     obs: &#39;col_0&#39;, &#39;leiden&#39;
+     var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;
+     uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;
+     obsm: &#39;X_pca&#39;, &#39;X_umap&#39;, &#39;spatial&#39;, &#39;spatial_pixel&#39;, &#39;spatial_real&#39;
+     varm: &#39;PCs&#39;
+     obsp: &#39;connectivities&#39;, &#39;distances&#39;, &#39;spatial_connectivities&#39;, &#39;spatial_distances&#39;}
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

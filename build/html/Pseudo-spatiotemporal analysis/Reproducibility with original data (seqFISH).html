@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reproducibility with original data (seqFISH) &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Application with new data" href="Application%20with%20new%20data.html" />
+    <link rel="prev" title="Reproducibility with original data (DLPFC)" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html">Reproducibility with original data (DLPFC)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reproducibility with original data (seqFISH)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">Perform SpaceFlow for pseudo-spatiotemporal analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html">Application with new data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">Perform SpaceFlow for pseudo-spatiotemporal analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+      <li class="breadcrumb-item active">Reproducibility with original data (seqFISH)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Pseudo-spatiotemporal analysis/Reproducibility with original data (seqFISH).ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Reproducibility-with-original-data-(seqFISH)">
+<h1>Reproducibility with original data (seqFISH)<a class="headerlink" href="#Reproducibility-with-original-data-(seqFISH)" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates how to pseudo-spatiotemporal analysis on seqFISH mouse embryo data using SODB and SpaceFlow.</p>
+<p>A reference paper can be found at <a class="reference external" href="https://www.nature.com/articles/s41467-022-31739-w">https://www.nature.com/articles/s41467-022-31739-w</a>.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb">https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<section id="Import-packages-and-set-configurations">
+<h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the Python warnings module to filter and ignore any warnings that may occur in the program after this point.</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import several python packages commonly used in data analysis and visualization.</span>
+<span class="c1"># numpy (imported as np) is a package for numerical computing with arrays.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># scanpy (imported as sc) is a package for single-cell RNA sequencing analysis.</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="c1"># matplotlib.pyplot (imported as plt) is a package for data visualization.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from SpaceFlow package import SpaceFlow module</span>
+<span class="kn">from</span> <span class="nn">SpaceFlow</span> <span class="kn">import</span> <span class="n">SpaceFlow</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports a palettable package</span>
+<span class="kn">import</span> <span class="nn">palettable</span>
+<span class="c1"># Create three variables with lists of colors for categorical visualizations and biotechnology-related visualizations, respectively.</span>
+<span class="n">cmp_pspace</span> <span class="o">=</span> <span class="n">palettable</span><span class="o">.</span><span class="n">cartocolors</span><span class="o">.</span><span class="n">diverging</span><span class="o">.</span><span class="n">TealRose_7</span><span class="o">.</span><span class="n">mpl_colormap</span>
+<span class="n">cmp_domain</span> <span class="o">=</span> <span class="n">palettable</span><span class="o">.</span><span class="n">cartocolors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Pastel_10</span><span class="o">.</span><span class="n">mpl_colors</span>
+<span class="n">cmp_ct</span> <span class="o">=</span> <span class="n">palettable</span><span class="o">.</span><span class="n">cartocolors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Safe_10</span><span class="o">.</span><span class="n">mpl_colors</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
+<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
+<span class="c1"># Pysodb is a Python package that provides a set of tools for working with SODB databases.</span>
+<span class="c1"># SODB is a format used to store data in memory-mapped files for efficient access and querying.</span>
+<span class="c1"># This package allows users to interact with SODB files using Python.</span>
+<span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the sodb object</span>
+<span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define names of the dataset_name and experiment_name</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;lohoff2021integration&#39;</span>
+<span class="n">experiment_name</span> <span class="o">=</span> <span class="s1">&#39;lohoff2020highly_seqFISH_mouse_Gastrulation&#39;</span>
+<span class="c1"># Load a specific experiment</span>
+<span class="c1"># It takes two arguments: the name of the dataset and the name of the experiment to load.</span>
+<span class="c1"># Two arguments are available at https://gene.ai.tencent.com/SpatialOmics/.</span>
+<span class="c1">#%%time</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span><span class="n">experiment_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[lohoff2020highly_seqFISH_mouse_Gastrulation] in dataset[lohoff2021integration]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter out genes</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_genes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_cells</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">
+<h2>Perform SpaceFlow for pseudo-spatiotemporal analysis<a class="headerlink" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create SpaceFlow Object</span>
+<span class="c1">#%%time</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">SpaceFlow</span><span class="o">.</span><span class="n">SpaceFlow</span><span class="p">(</span>
+    <span class="n">count_matrix</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+    <span class="n">spatial_locs</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">],</span>
+    <span class="n">sample_names</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obs_names</span><span class="p">,</span>
+    <span class="n">gene_names</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">var_names</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocess data</span>
+<span class="c1">#%%time</span>
+<span class="n">sf</span><span class="o">.</span><span class="n">preprocessing_data</span><span class="p">(</span><span class="n">n_top_genes</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a deep graph network model</span>
+<span class="c1">#%%time</span>
+<span class="n">sf</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="n">spatial_regularization_strength</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">z_dim</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">max_patience</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">min_stop</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">gpu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">regularization_acceleration</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">edge_subset_sz</span><span class="o">=</span><span class="mi">1000000</span>
+<span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Epoch 2/1000, Loss: 1.4433507919311523
+Epoch 12/1000, Loss: 1.1957049369812012
+Epoch 22/1000, Loss: 0.899651050567627
+Epoch 32/1000, Loss: 0.5220378637313843
+Epoch 42/1000, Loss: 0.25793352723121643
+Epoch 52/1000, Loss: 0.1524793654680252
+Epoch 62/1000, Loss: 0.11322928965091705
+Epoch 72/1000, Loss: 0.0992421880364418
+Epoch 82/1000, Loss: 0.08421209454536438
+Epoch 92/1000, Loss: 0.08441481739282608
+Epoch 102/1000, Loss: 0.07488371431827545
+Epoch 112/1000, Loss: 0.07958266884088516
+Epoch 122/1000, Loss: 0.07067456096410751
+Epoch 132/1000, Loss: 0.07084371149539948
+Epoch 142/1000, Loss: 0.06988966464996338
+Epoch 152/1000, Loss: 0.06983029097318649
+Epoch 162/1000, Loss: 0.07103952765464783
+Epoch 172/1000, Loss: 0.06583818048238754
+Epoch 182/1000, Loss: 0.0638948529958725
+Epoch 192/1000, Loss: 0.06412710249423981
+Epoch 202/1000, Loss: 0.06145592778921127
+Epoch 212/1000, Loss: 0.06415022164583206
+Epoch 222/1000, Loss: 0.0672992393374443
+Epoch 232/1000, Loss: 0.06305063515901566
+Epoch 242/1000, Loss: 0.057416580617427826
+Epoch 252/1000, Loss: 0.05533405393362045
+Epoch 262/1000, Loss: 0.062475450336933136
+Epoch 272/1000, Loss: 0.06412672251462936
+Epoch 282/1000, Loss: 0.05803115665912628
+Epoch 292/1000, Loss: 0.056337498128414154
+Epoch 302/1000, Loss: 0.05895162373781204
+Epoch 312/1000, Loss: 0.05637642368674278
+Epoch 322/1000, Loss: 0.05779914930462837
+Training complete!
+Embedding is saved at ./embedding.tsv
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[-0.5199552 , -0.17967458,  0.7573716 , ..., -0.1183727 ,
+        -0.00703658,  2.489347  ],
+       [-0.46287113, -0.19304845,  1.0321252 , ..., -0.19984664,
+        -0.06295489,  2.3953645 ],
+       [-0.52252036,  0.6154977 ,  0.13132505, ..., -0.03820756,
+        -0.00726214,  2.0950577 ],
+       ...,
+       [-0.23219149,  0.9938329 , -0.00803952, ..., -0.03670396,
+         0.5799729 ,  1.5172849 ],
+       [-0.32494605, -0.07422221,  1.0354829 , ..., -0.13825543,
+         0.98951554,  2.3516695 ],
+       [-0.2175944 ,  0.82438576,  0.0362829 , ..., -0.0678086 ,
+         0.89376557,  1.5167462 ]], dtype=float32)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Idenfify the spatiotemporal patterns through pseudo-Spatiotemporal Map (pSM)</span>
+<span class="n">sf</span><span class="o">.</span><span class="n">pseudo_Spatiotemporal_Map</span><span class="p">(</span><span class="n">pSM_values_save_filepath</span><span class="o">=</span><span class="s2">&quot;./pSM_values.tsv&quot;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Performing pseudo-Spatiotemporal Map
+pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spots saved at ./pSM_values.tsv!
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column called &#39;pspace&#39; from pSM values of cells or spots.</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;pspace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">pSM_values</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize spatial coordinates in a scatterplot colored by &#39;pspace&#39;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;spatial&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;pspace&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">color_map</span><span class="o">=</span><span class="n">cmp_pspace</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_pspace.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_pspace.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_0.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize spatial coordinates in a scatterplot colored by &#39;celltype_mapped_refined&#39;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;spatial&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;celltype_mapped_refined&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_ct.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_ct.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_0.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" class="btn btn-neutral float-left" title="Reproducibility with original data (DLPFC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Application%20with%20new%20data.html" class="btn btn-neutral float-right" title="Application with new data" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

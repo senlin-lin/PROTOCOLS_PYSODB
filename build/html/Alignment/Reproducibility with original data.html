@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reproducibility with original data &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Application with new data" href="Application%20with%20new%20data.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Alignment.html">Alignment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reproducibility with original data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Running-PASTE-for-alignment">Running PASTE for alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html">Application with new data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Alignment.html">Alignment</a></li>
+      <li class="breadcrumb-item active">Reproducibility with original data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Alignment/Reproducibility with original data.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Reproducibility-with-original-data">
+<h1>Reproducibility with original data<a class="headerlink" href="#Reproducibility-with-original-data" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates spatial data alignment on 10X Visium DLPFC data using SODB and Paste.</p>
+<p>A reference paper can be found at <a class="reference external" href="https://www.nature.com/articles/s41592-022-01459-6">https://www.nature.com/articles/s41592-022-01459-6</a>.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/raphael-group/paste_reproducibility/blob/main/notebooks/DLPFC_pairwise.ipynb">https://github.com/raphael-group/paste_reproducibility/blob/main/notebooks/DLPFC_pairwise.ipynb</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<section id="Import-packages-and-set-configurations">
+<h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports various packages for data analysis and visualization.</span>
+<span class="c1"># math: provides mathematical functions such as logarithms, trigonometric functions, etc.</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="c1"># pandas: used for data manipulation and analysis.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># numpy: used for numerical computing, including mathematical operations on arrays and matrices.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># scipy: used for scientific computing, including functions for optimization, linear algebra, statistics, and signal processing.</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="c1"># seaborn: used for statistical data visualization, providing high-level interfaces for creating informative and attractive visualizations.</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># matplotlib: a comprehensive library for creating static, animated, and interactive visualizations in Python.</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># matplotlib.patches: provides classes for creating graphical objects such as rectangles, circles, and polygons.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+<span class="c1"># style: a module within matplotlib that allows users to customize the style of plots.</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
+<span class="c1"># time: provides time-related functions, such as measuring execution time and converting between time formats.</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="c1"># scanpy: a Python package for single-cell gene expression analysis, including preprocessing, clustering, and differential expression analysis.</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="c1"># sklearn: a machine learning library with various tools for classification, regression, clustering, and dimensionality reduction.</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="c1"># networkx: a Python package for creating, manipulating, and studying complex networks.</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="c1"># ot: a Python package for optimal transport (OT) computations, including OT-based algorithms for data analysis and visualization.</span>
+<span class="kn">import</span> <span class="nn">ot</span>
+<span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import paste package</span>
+<span class="kn">import</span> <span class="nn">paste</span> <span class="k">as</span> <span class="nn">pst</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
+<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
+<span class="c1"># Pysodb is a Python package that provides a set of tools for working with SODB databases.</span>
+<span class="c1"># SODB is a format used to store data in memory-mapped files for efficient access and querying.</span>
+<span class="c1"># This package allows users to interact with SODB files using Python.</span>
+<span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialization</span>
+<span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the list of datasets with specific category</span>
+<span class="c1"># Categories [&quot;Spatial Transcriptomics&quot;, &quot;Spatial Proteomics&quot;, &quot;Spatial Metabolomics&quot;, &quot;Spatial Genomics&quot;, &quot;Spatial MultiOmics&quot;]</span>
+<span class="n">sodb</span><span class="o">.</span><span class="n">list_dataset_by_category</span><span class="p">(</span><span class="s1">&#39;Spatial Transcriptomics&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Buzzi2022Spatial&#39;,
+ &#39;codeluppi2018spatial&#39;,
+ &#39;Marshall2022High_human&#39;,
+ &#39;moffitt2018molecular&#39;,
+ &#39;Juntaro2022MEK&#39;,
+ &#39;Shi2022Spatial&#39;,
+ &#39;10x&#39;,
+ &#39;Allen2022Molecular_aging&#39;,
+ &#39;bergenstrahle2021super&#39;,
+ &#39;Dhainaut2022Spatial&#39;,
+ &#39;Joglekar2021A&#39;,
+ &#39;Barkley2022Cancer&#39;,
+ &#39;Ratz2022Clonal&#39;,
+ &#39;Kleshchevnikov2022Cell2location&#39;,
+ &#39;Visium_Allen&#39;,
+ &#39;Misra2021Characterizing&#39;,
+ &#39;wang2022high&#39;,
+ &#39;Zhang2023Amolecularly_rawcount&#39;,
+ &#39;Navarro2020Spatial&#39;,
+ &#39;lohoff2021integration&#39;,
+ &#39;thrane2018spatially&#39;,
+ &#39;stahl2016visualization&#39;,
+ &#39;Sun2021Integrating&#39;,
+ &#39;Fu2021Unsupervised&#39;,
+ &#39;ji2020multimodal&#39;,
+ &#39;wei2022single&#39;,
+ &#39;Sun2022Excitatory&#39;,
+ &#39;Marshall2022High_mouse&#39;,
+ &#39;stickels2020highly&#39;,
+ &#39;eng2019transcriptome&#39;,
+ &#39;Melo2021Integrating&#39;,
+ &#39;Tower2021Spatial&#39;,
+ &#39;chen2022spatiotemporal_compre_20&#39;,
+ &#39;hunter2021spatially&#39;,
+ &#39;carlberg2019exploring&#39;,
+ &#39;Allen2022Molecular_lps&#39;,
+ &#39;Wu2022spatial&#39;,
+ &#39;Wang2018three&#39;,
+ &#39;Wang2018Three_1k&#39;,
+ &#39;zhang2021spatially&#39;,
+ &#39;rodriques2019slide&#39;,
+ &#39;wang2021easi&#39;,
+ &#39;asp2017spatial&#39;,
+ &#39;Shah2016InSitu&#39;,
+ &#39;chen2022spatiotemporal&#39;,
+ &#39;Borm2022Scalable&#39;,
+ &#39;he2020integrating&#39;,
+ &#39;xia2019spatial&#39;,
+ &#39;parigi2022the&#39;,
+ &#39;Dixon2022Spatially&#39;,
+ &#39;fawkner2021spatiotemporal&#39;,
+ &#39;backdahl2021spatial&#39;,
+ &#39;Pascual2021Dietary&#39;,
+ &#39;asp2019a&#39;,
+ &#39;Sanchez2021A&#39;,
+ &#39;Fang2022Conservation&#39;,
+ &#39;Biermann2022Dissecting&#39;,
+ &#39;maynard2021trans&#39;,
+ &#39;berglund2018spatial&#39;,
+ &#39;Vickovic2019high&#39;,
+ &#39;Vickovic2019high_update&#39;,
+ &#39;Merfish_Visp&#39;,
+ &#39;Gouin2021An&#39;,
+ &#39;guilliams2022spatial&#39;,
+ &#39;Kadur2022Human&#39;,
+ &#39;Alon2021Expansion&#39;,
+ &#39;scispace&#39;,
+ &#39;gracia2021genome&#39;,
+ &#39;ortiz2020molecular&#39;,
+ &#39;Garcia2021Mapping&#39;,
+ &#39;maniatis2019spatiotemporal&#39;,
+ &#39;seqFISH_VISp&#39;,
+ &#39;chen2021dissecting&#39;,
+ &#39;moncada2020integrating&#39;,
+ &#39;Booeshaghi2021Isoform&#39;,
+ &#39;hildebrandt2021spatial&#39;,
+ &#39;xia2022the&#39;,
+ &#39;kvastad2021the&#39;,
+ &#39;Konieczny2022Interleukin&#39;,
+ &#39;liu2022spatiotemporal&#39;,
+ &#39;DARTFISH&#39;,
+ &#39;chen2020spatial&#39;,
+ &#39;chen2021decoding&#39;,
+ &#39;mantri2021spatiotemporal&#39;,
+ &#39;Lebrigand2022The&#39;,
+ &#39;Zeng2023Integrative&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the list of datasets</span>
+<span class="n">adata_list</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;maynard2021trans&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+download experiment[151508] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 110M/110M [00:57&lt;00:00, 2.00MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151508] in dataset[maynard2021trans]
+download experiment[151671] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 129M/129M [01:07&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151671] in dataset[maynard2021trans]
+download experiment[151507] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 116M/116M [01:00&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151507] in dataset[maynard2021trans]
+download experiment[151674] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 146M/146M [01:16&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151674] in dataset[maynard2021trans]
+download experiment[151670] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 115M/115M [00:59&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151670] in dataset[maynard2021trans]
+download experiment[151669] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 120M/120M [01:02&lt;00:00, 2.00MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151669] in dataset[maynard2021trans]
+download experiment[151676] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 121M/121M [01:03&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151676] in dataset[maynard2021trans]
+download experiment[151675] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 119M/119M [01:02&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151675] in dataset[maynard2021trans]
+download experiment[151509] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 123M/123M [01:04&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151509] in dataset[maynard2021trans]
+download experiment[151673] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 131M/131M [01:08&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151673] in dataset[maynard2021trans]
+download experiment[151672] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 124M/124M [01:04&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151672] in dataset[maynard2021trans]
+download experiment[151510] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 119M/119M [01:02&lt;00:00, 2.01MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[151510] in dataset[maynard2021trans]
+</pre></div></div>
+</div>
+</section>
+<section id="Preparation">
+<h2>Preparation<a class="headerlink" href="#Preparation" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a list containing 12 samples</span>
+<span class="n">sample_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;151507&quot;</span><span class="p">,</span> <span class="s2">&quot;151508&quot;</span><span class="p">,</span> <span class="s2">&quot;151509&quot;</span><span class="p">,</span><span class="s2">&quot;151510&quot;</span><span class="p">,</span> <span class="s2">&quot;151669&quot;</span><span class="p">,</span> <span class="s2">&quot;151670&quot;</span><span class="p">,</span><span class="s2">&quot;151671&quot;</span><span class="p">,</span> <span class="s2">&quot;151672&quot;</span><span class="p">,</span> <span class="s2">&quot;151673&quot;</span><span class="p">,</span><span class="s2">&quot;151674&quot;</span><span class="p">,</span> <span class="s2">&quot;151675&quot;</span><span class="p">,</span> <span class="s2">&quot;151676&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new dictionary called &quot;adatas&quot; by removing  missing values in the &quot;Region&quot; column from each dataset in the original dictionary &quot;adata_list&quot;.</span>
+<span class="n">adatas</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adata_list</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">adata_list</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">())]</span>
+    <span class="n">adatas</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define groups of samples based on IDs</span>
+<span class="n">sample_groups</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;151507&quot;</span><span class="p">,</span> <span class="s2">&quot;151508&quot;</span><span class="p">,</span> <span class="s2">&quot;151509&quot;</span><span class="p">,</span><span class="s2">&quot;151510&quot;</span><span class="p">],[</span> <span class="s2">&quot;151669&quot;</span><span class="p">,</span> <span class="s2">&quot;151670&quot;</span><span class="p">,</span><span class="s2">&quot;151671&quot;</span><span class="p">,</span> <span class="s2">&quot;151672&quot;</span><span class="p">],[</span> <span class="s2">&quot;151673&quot;</span><span class="p">,</span><span class="s2">&quot;151674&quot;</span><span class="p">,</span> <span class="s2">&quot;151675&quot;</span><span class="p">,</span> <span class="s2">&quot;151676&quot;</span><span class="p">]]</span>
+<span class="c1"># creates a list of lists called layer_groups</span>
+<span class="c1"># where each sub-list contains the AnnData objects for each sample in the corresponding group from sample_groups.</span>
+<span class="n">layer_groups</span> <span class="o">=</span> <span class="p">[[</span><span class="n">adatas</span><span class="p">[</span><span class="n">sample_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_groups</span><span class="p">[</span><span class="n">j</span><span class="p">]))]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_groups</span><span class="p">))]</span>
+<span class="c1"># create a dictionary that maps the layer number to a color from the default Seaborn color palette.</span>
+<span class="c1"># The layer number is represented as a string in the format &quot;Layer{layer_number}&quot;</span>
+<span class="n">layer_to_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Layer</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)}</span>
+<span class="c1"># adds an additional key &quot;WM&quot; to the layer_to_color_map dictionary</span>
+<span class="n">layer_to_color_map</span><span class="p">[</span><span class="s1">&#39;WM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">6</span><span class="p">]</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the different slices of the DLPFC brain region mapped by layer_groups</span>
+<span class="n">slice_map</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">11.5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;Sample &#39;</span><span class="o">+</span><span class="n">slice_map</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span><span class="n">transform</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+        <span class="n">adata</span> <span class="o">=</span> <span class="n">adatas</span><span class="p">[</span><span class="n">sample_list</span><span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="n">i</span><span class="p">]]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">layer_to_color_map</span><span class="p">))</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+                         <span class="n">color</span><span class="o">=</span><span class="n">colors</span>
+                        <span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Slice &#39;</span><span class="o">+</span> <span class="n">slice_map</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;300$\mu$m&#39;</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;10$\mu$m&quot;</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">delta</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="o">+</span><span class="n">delta</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span><span class="n">xycoords</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">textcoords</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;&lt;-&gt;&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">transform</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">layer_to_color_map</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">))],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cortex layer&#39;</span><span class="p">,</span><span class="n">title_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/DLPFC_before.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_14_0.png" src="../_images/Alignment_Reproducibility_with_original_data_14_0.png" />
+</div>
+</div>
+</section>
+<section id="Running-PASTE-for-alignment">
+<h2>Running PASTE for alignment<a class="headerlink" href="#Running-PASTE-for-alignment" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a max_accuracy function to calculate the maximum accuracy of a binary classifier that distinguishes between two sets of labels</span>
+<span class="k">def</span> <span class="nf">max_accuracy</span><span class="p">(</span><span class="n">labels1</span><span class="p">,</span><span class="n">labels2</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">labels1</span><span class="p">),</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">labels2</span><span class="p">))</span>
+    <span class="n">cats</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels1</span><span class="p">))</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels1</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">w</span> <span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">labels1</span><span class="o">==</span><span class="n">c</span><span class="p">),</span><span class="nb">sum</span><span class="p">(</span><span class="n">labels2</span><span class="o">==</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cats</span><span class="p">])</span>
+
+<span class="c1"># Define a mapping_accuracy function to calculate the mapping accuracy between two sets of labels using the optimal transport (OT) algorithm</span>
+<span class="k">def</span> <span class="nf">mapping_accuracy</span><span class="p">(</span><span class="n">labels1</span><span class="p">,</span><span class="n">labels2</span><span class="p">,</span><span class="n">pi</span><span class="p">):</span>
+    <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Layer1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Layer4&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Layer5&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Layer6&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;WM&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">labels1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">labels2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="c1"># Define a max_accuracy_mapping function to calculate the optimal transport plan pi between two sets of labels using the OT algorithm</span>
+<span class="k">def</span> <span class="nf">max_accuracy_mapping</span><span class="p">(</span><span class="n">labels1</span><span class="p">,</span><span class="n">labels2</span><span class="p">):</span>
+    <span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">labels1</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">labels2</span><span class="p">)</span>
+    <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Layer1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Layer4&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Layer5&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Layer6&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;WM&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">labels1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">labels2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping_dict</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">emd</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span><span class="o">/</span><span class="n">n1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span><span class="o">/</span><span class="n">n2</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a spatial heuristic and pairwise alignment to estimate a mapping between the datasets, which is then used to calculate a mapping accuracy</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">res_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sample&#39;</span><span class="p">,</span><span class="s1">&#39;Pair&#39;</span><span class="p">,</span><span class="s1">&#39;Kind&#39;</span><span class="p">,</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">])</span>
+<span class="n">pis</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">))]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">pi0</span> <span class="o">=</span> <span class="n">pst</span><span class="o">.</span><span class="n">match_spots_using_spatial_heuristic</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">],</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">],</span><span class="n">use_ot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">pis</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pst</span><span class="o">.</span><span class="n">pairwise_align</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">G_init</span><span class="o">=</span><span class="n">pi0</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">tt</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">start</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">mapping_accuracy</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">],</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">],</span><span class="n">pis</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span><span class="n">acc</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">tt</span><span class="p">)</span>
+        <span class="c1"># np.savetxt(&#39;../data/DLPFC/saved_results/init_{0}_{1}_{2}.gz&#39;.format(j,i,&#39;ot&#39;), pis[j][i], delimiter=&#39;,&#39;)</span>
+        <span class="n">res_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">res_df</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;PASTE&#39;</span><span class="p">,</span><span class="n">tt</span><span class="p">,</span><span class="n">acc</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+0 0 Accuracy 0.815543482357772 time 181.44587230682373
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+/home/linsenlin/anaconda3/envs/alignment/lib/python3.8/site-packages/ot/lp/__init__.py:343: UserWarning: numItermax reached before optimality. Try to increase numItermax.
+  result_code_string = check_result(result_code)
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0 1 Accuracy 0.22047228891676612 time 30.249147653579712
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+/home/linsenlin/anaconda3/envs/alignment/lib/python3.8/site-packages/ot/lp/__init__.py:343: UserWarning: numItermax reached before optimality. Try to increase numItermax.
+  result_code_string = check_result(result_code)
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0 2 Accuracy 0.8713495745166362 time 16.6234712600708
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+1 0 Accuracy 0.9151285966713762 time 335.459974527359
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+/home/linsenlin/anaconda3/envs/alignment/lib/python3.8/site-packages/ot/lp/__init__.py:343: UserWarning: numItermax reached before optimality. Try to increase numItermax.
+  result_code_string = check_result(result_code)
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+RESULT MIGHT BE INACURATE
+Max number of iteration reached, currently 100000. Sometimes iterations go on in cycle even though the solution has been reached, to check if it&#39;s the case here have a look at the minimal reduced cost. If it is very close to machine precision, you might actually have the correct solution, if not try setting the maximum number of iterations a bit higher
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 1 Accuracy 0.5920829519638594 time 16.60365629196167
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+1 2 Accuracy 0.861938266075075 time 99.27790570259094
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+2 0 Accuracy 0.8589111598101083 time 101.12431859970093
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+2 1 Accuracy 0.827013263737229 time 111.4293143749237
+Using selected backend cpu. If you want to use gpu, set use_gpu = True.
+2 2 Accuracy 0.8283188989963737 time 127.32355546951294
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View alignment results</span>
+<span class="n">res_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample</th>
+      <th>Pair</th>
+      <th>Kind</th>
+      <th>Time</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>PASTE</td>
+      <td>181.445872</td>
+      <td>0.815543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>PASTE</td>
+      <td>30.249148</td>
+      <td>0.220472</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>PASTE</td>
+      <td>16.623471</td>
+      <td>0.871350</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>PASTE</td>
+      <td>335.459975</td>
+      <td>0.915129</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>PASTE</td>
+      <td>16.603656</td>
+      <td>0.592083</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>2</td>
+      <td>PASTE</td>
+      <td>99.277906</td>
+      <td>0.861938</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>0</td>
+      <td>PASTE</td>
+      <td>101.124319</td>
+      <td>0.858911</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2</td>
+      <td>1</td>
+      <td>PASTE</td>
+      <td>111.429314</td>
+      <td>0.827013</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2</td>
+      <td>2</td>
+      <td>PASTE</td>
+      <td>127.323555</td>
+      <td>0.828319</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Align spatial coordinates of sequential pairwise slices</span>
+<span class="n">paste_layer_groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">pst</span><span class="o">.</span><span class="n">stack_slices_pairwise</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">pis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">))</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Define a function to plots spatial coordinates of cells in different groups</span>
+<span class="k">def</span> <span class="nf">plot_slices_overlap</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">adatas</span><span class="p">,</span> <span class="n">sample_list</span><span class="p">,</span> <span class="n">layer_to_color_map</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,):</span>
+    <span class="n">marker_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;+&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+            <span class="n">adata</span> <span class="o">=</span> <span class="n">adatas</span><span class="p">[</span><span class="n">sample_list</span><span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">layer_to_color_map</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span><span class="n">groups</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">layer_to_color_map</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">))],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cortex layer&#39;</span><span class="p">,</span><span class="n">title_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">save</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">save</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot Stacking of Four slices without alignment</span>
+<span class="n">plot_slices_overlap</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">,</span> <span class="n">adatas</span><span class="p">,</span> <span class="n">sample_list</span><span class="p">,</span> <span class="n">layer_to_color_map</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="s1">&#39;figures/DLPFC_before&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_21_0.png" src="../_images/Alignment_Reproducibility_with_original_data_21_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_21_1.png" src="../_images/Alignment_Reproducibility_with_original_data_21_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_21_2.png" src="../_images/Alignment_Reproducibility_with_original_data_21_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot Stacking of Four slices with PASTE alignment</span>
+<span class="n">plot_slices_overlap</span><span class="p">(</span><span class="n">paste_layer_groups</span><span class="p">,</span> <span class="n">adatas</span><span class="p">,</span> <span class="n">sample_list</span><span class="p">,</span> <span class="n">layer_to_color_map</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="s1">&#39;figures/DLPFC_after&#39;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_22_0.png" src="../_images/Alignment_Reproducibility_with_original_data_22_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_22_1.png" src="../_images/Alignment_Reproducibility_with_original_data_22_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Alignment_Reproducibility_with_original_data_22_2.png" src="../_images/Alignment_Reproducibility_with_original_data_22_2.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a third spatial dimension to the spatial data by stacking an array of j*100 values for each group of the list &#39;layer_groups&#39;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;dlpfc&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">)):</span>
+    <span class="n">rsta_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_groups</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="n">a</span><span class="o">=</span> <span class="n">layer_groups</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">spatial</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span>
+        <span class="n">spatial_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">spatial</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">j</span><span class="o">*</span><span class="mi">100</span>
+        <span class="n">spatial_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">spatial</span><span class="p">,</span><span class="n">spatial_z</span><span class="p">])</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial_3d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spatial_3d</span>
+        <span class="n">rsta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a_concat</span> <span class="o">=</span> <span class="n">rsta_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">rsta_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">a_concat</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s1">_sample</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_3d.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+/home/yzy/anaconda3/envs/paste/lib/python3.8/site-packages/anndata/_core/anndata.py:1785: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  [AnnData(sparse.csr_matrix(a.shape), obs=a.obs) for a in all_adatas],
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a third spatial dimension to the spatial data by stacking an array of j*100 values for each group of the list &#39;paste_layer_groups&#39;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;dlpfc&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">paste_layer_groups</span><span class="p">)):</span>
+    <span class="n">rsta_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">paste_layer_groups</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+        <span class="n">a</span><span class="o">=</span> <span class="n">paste_layer_groups</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">spatial</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span>
+        <span class="n">spatial_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">spatial</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">j</span><span class="o">*</span><span class="mi">100</span>
+        <span class="n">spatial_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">spatial</span><span class="p">,</span><span class="n">spatial_z</span><span class="p">])</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial_3d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spatial_3d</span>
+        <span class="n">rsta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">a_concat</span> <span class="o">=</span> <span class="n">rsta_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">rsta_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">a_concat</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s1">_sample</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_3d.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8517.0
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Application%20with%20new%20data.html" class="btn btn-neutral float-right" title="Application with new data" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

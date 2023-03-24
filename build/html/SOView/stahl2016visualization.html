@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stahl2016visualization &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="stickels2020highly" href="stickels2020highly.html" />
+    <link rel="prev" title="moncada2020integrating" href="moncada2020integrating.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="SOView.html">SOView</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10x.html">10x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Biancalani2021Deep.html">Biancalani2021Deep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dataset5_MS_process.html">Dataset5_MS_process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fu2021Unsupervised.html">Fu2021Unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lohoff2021integration.html">lohoff2021integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maynard2021trans%28151507%29.html">maynard2021trans(151507)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maynard2021trans%28151671%29.html">maynard2021trans(151671)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maynard2021trans%28151673%29.html">maynard2021trans(151673)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Merfish_Visp.html">Merfish_Visp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moncada2020integrating.html">moncada2020integrating</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">stahl2016visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-data-using-pysodb">load data using pysodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-SOView">plot SOView</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stickels2020highly.html">stickels2020highly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sun2021Integrating.html">Sun2021Integrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wang2018Three_1k.html">Wang2018Three_1k</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wang2018three.html">Wang2018three</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="SOView.html">SOView</a></li>
+      <li class="breadcrumb-item active">stahl2016visualization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/SOView/stahl2016visualization.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stahl2016visualization">
+<h1>stahl2016visualization<a class="headerlink" href="#stahl2016visualization" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates how to utilize SOVIew (a spatial omics visualization tool) to quickly visualize data fetched by pysodb, helping users quickly determine what is the tissue organization of the data, and avoiding time-consuming preprocessing, clustering, etc.</p>
+<section id="load-data-using-pysodb">
+<h2>load data using pysodb<a class="headerlink" href="#load-data-using-pysodb" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
+<span class="c1"># Pysodb is a Python package that provides a set of tools for working with SODB databases.</span>
+<span class="c1"># SODB is a format used to store data in memory-mapped files for efficient access and querying.</span>
+<span class="c1"># This package allows users to interact with SODB files using Python.</span>
+<span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the sodb object</span>
+<span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define names of the dataset_name and experiment_name</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;stahl2016visualization&#39;</span>
+<span class="n">experiment_name</span> <span class="o">=</span> <span class="s1">&#39;Rep4_MOB_trans&#39;</span>
+<span class="c1"># Load a specific experiment</span>
+<span class="c1"># It takes two arguments: the name of the dataset and the name of the experiment to load.</span>
+<span class="c1"># Two arguments are available at https://gene.ai.tencent.com/SpatialOmics/.</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span><span class="n">experiment_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+download experiment[Rep4_MOB_trans] in dataset[stahl2016visualization]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12.7M/12.7M [00:06&lt;00:00, 2.00MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[Rep4_MOB_trans] in dataset[stahl2016visualization]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</section>
+<section id="plot-SOView">
+<h2>plot SOView<a class="headerlink" href="#plot-SOView" title="此标题的永久链接"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import SOView package</span>
+<span class="kn">import</span> <span class="nn">SOView</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/linsenlin/anaconda3/envs/SOView/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+scanpy==1.9.1 anndata==0.8.0 umap==0.5.2 numpy==1.22.4 scipy==1.7.3 pandas==1.5.3 scikit-learn==1.0.2 statsmodels==0.13.5 python-igraph==0.10.4 pynndescent==0.5.8
+squidpy==1.1.2
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize data fetched by pysodb by utilizing SOVIew</span>
+<span class="n">SOView</span><span class="o">.</span><span class="n">SOViewer_plot</span><span class="p">(</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">,</span> <span class="c1"># the data to plot</span>
+    <span class="c1">#save = f&#39;figures/{dataset_name}_{experiment_name}&#39;, # save the result to specified path or don&#39;t save (None)</span>
+    <span class="n">embedding_use</span><span class="o">=</span><span class="s1">&#39;X_umap&#39;</span><span class="p">,</span> <span class="c1"># which embedding to be used for plot</span>
+    <span class="n">dot_size</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="c1"># the marker size of the plot</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span> <span class="c1"># marker style</span>
+<span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+generating color coding...
+1.0 0.0
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/SOView_stahl2016visualization_8_1.png" class="no-scaled-link" src="../_images/SOView_stahl2016visualization_8_1.png" style="width: 629px; height: 722px;" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0 0.0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/SOView_stahl2016visualization_8_3.png" class="no-scaled-link" src="../_images/SOView_stahl2016visualization_8_3.png" style="width: 629px; height: 722px;" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="moncada2020integrating.html" class="btn btn-neutral float-left" title="moncada2020integrating" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="stickels2020highly.html" class="btn btn-neutral float-right" title="stickels2020highly" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application with new data &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Reproducibility with original data" href="Reproducibility%20with%20original%20data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Spatially%20variable%20gene.html">Spatially variable gene</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data.html">Reproducibility with original data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Application with new data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Perform-Sepal-for-spatially-variable-gene-detection">Perform Sepal for spatially variable gene detection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+      <li class="breadcrumb-item active">Application with new data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Spatially variable gene/Application with new data.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Application-with-new-data">
+<h1>Application with new data<a class="headerlink" href="#Application-with-new-data" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates spatially variable gene detection on 10X Visium mouse brain data using SODB and Sepal.</p>
+<p>A reference paper can be found at <a class="reference external" href="https://academic.oup.com/bioinformatics/article/37/17/2644/6168120">https://academic.oup.com/bioinformatics/article/37/17/2644/6168120</a>.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/almaan/sepal/blob/master/examples/melanoma.ipynb">https://github.com/almaan/sepal/blob/master/examples/melanoma.ipynb</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<section id="Import-packages-and-set-configurations">
+<h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import several Python packages commonly used in data analysis and visualization.</span>
+<span class="c1"># numpy (imported as np) is a package for numerical computing with arrays</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># pandas (imported as pd) is a package for data manipulation and analysis</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># matplotlib.pyplot (imported as plt) is a package for data visualization</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import sepal package and its modules</span>
+<span class="kn">import</span> <span class="nn">sepal</span>
+<span class="kn">import</span> <span class="nn">sepal.datasets</span> <span class="k">as</span> <span class="nn">d</span>
+<span class="kn">import</span> <span class="nn">sepal.models</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">sepal.utils</span> <span class="k">as</span> <span class="nn">ut</span>
+<span class="kn">import</span> <span class="nn">sepal.family</span> <span class="k">as</span> <span class="nn">family</span>
+<span class="kn">import</span> <span class="nn">sepal.enrich</span> <span class="k">as</span> <span class="nn">fea</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
+<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
+<span class="c1"># Pysodb is a Python package that provides a set of tools for working with SODB databases.</span>
+<span class="c1"># SODB is a format used to store data in memory-mapped files for efficient access and querying.</span>
+<span class="c1"># This package allows users to interact with SODB files using Python.</span>
+<span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialization</span>
+<span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define names of the dataset_name and experiment_name</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;10x&#39;</span>
+<span class="n">experiment_name</span> <span class="o">=</span> <span class="s1">&#39;V1_Mouse_Brain_Sagittal_Posterior_filtered_feature_bc_matrix&#39;</span>
+<span class="c1"># Load a specific experiment</span>
+<span class="c1"># It takes two arguments: the name of the dataset and the name of the experiment to load.</span>
+<span class="c1"># Two arguments are available at https://gene.ai.tencent.com/SpatialOmics/.</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span><span class="n">experiment_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[V1_Mouse_Brain_Sagittal_Posterior_filtered_feature_bc_matrix] in dataset[10x]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the AnnData object to an H5AD file format.</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="s1">&#39;Visium_pysodb.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Perform-Sepal-for-spatially-variable-gene-detection">
+<h2>Perform Sepal for spatially variable gene detection<a class="headerlink" href="#Perform-Sepal-for-spatially-variable-gene-detection" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load in the raw data using a RawData class.</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">RawData</span><span class="p">(</span><span class="s1">&#39;Visium_pysodb.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter genes observed in less than 5 spots and/or less than 10 total observations</span>
+<span class="n">raw_data</span><span class="o">.</span><span class="n">cnt</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">filter_genes</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">cnt</span><span class="p">,</span>
+                               <span class="n">min_expr</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                               <span class="n">min_occur</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Derivative of CountData used to hold Visium array based data using a VisiumData class</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">VisiumData</span><span class="p">(</span><span class="n">raw_data</span><span class="p">,</span>
+              <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A propagate class is employ to normalize count data and then propagate it in time, to measure the diffusion time.</span>
+<span class="c1"># Set scale = True to perform</span>
+<span class="c1"># Minmax scaling of the diffusion times</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                    <span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="n">scale</span> <span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[INFO] : Using 128 workers
+[INFO] : Saturated Spots : 3095
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 16278/16278 [01:07&lt;00:00, 241.70it/s]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect the top 20 highest ranked ones after computing diffusion times for all the profiles</span>
+
+<span class="n">n_top</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># get names of profiles</span>
+<span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">times</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="c1"># argsort sorts from low to high, so reverse the order</span>
+<span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">sorted_indices</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sorted_profiles</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+<span class="c1"># extract top profiles</span>
+<span class="n">top_profiles</span> <span class="o">=</span> <span class="n">sorted_profiles</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n_top</span><span class="p">]</span>
+<span class="c1"># extract tail profiles</span>
+<span class="n">tail_profiles</span> <span class="o">=</span> <span class="n">sorted_profiles</span><span class="p">[</span><span class="o">-</span><span class="n">n_top</span><span class="p">:]</span>
+<span class="c1"># display top profiles and their times</span>
+<span class="n">times</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">top_profiles</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Calb1</th>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Prkcg</th>
+      <td>0.960986</td>
+    </tr>
+    <tr>
+      <th>Gfap</th>
+      <td>0.946612</td>
+    </tr>
+    <tr>
+      <th>Apod</th>
+      <td>0.919918</td>
+    </tr>
+    <tr>
+      <th>Hpca</th>
+      <td>0.919918</td>
+    </tr>
+    <tr>
+      <th>Sst</th>
+      <td>0.915811</td>
+    </tr>
+    <tr>
+      <th>Car8</th>
+      <td>0.899384</td>
+    </tr>
+    <tr>
+      <th>Itpka</th>
+      <td>0.893224</td>
+    </tr>
+    <tr>
+      <th>Mgp</th>
+      <td>0.891170</td>
+    </tr>
+    <tr>
+      <th>Itpr1</th>
+      <td>0.887064</td>
+    </tr>
+    <tr>
+      <th>Dner</th>
+      <td>0.874743</td>
+    </tr>
+    <tr>
+      <th>Hbb-bt</th>
+      <td>0.872690</td>
+    </tr>
+    <tr>
+      <th>Gad1</th>
+      <td>0.862423</td>
+    </tr>
+    <tr>
+      <th>Igfbp2</th>
+      <td>0.856263</td>
+    </tr>
+    <tr>
+      <th>Vim</th>
+      <td>0.850103</td>
+    </tr>
+    <tr>
+      <th>Pcp4</th>
+      <td>0.841889</td>
+    </tr>
+    <tr>
+      <th>Nefm</th>
+      <td>0.835729</td>
+    </tr>
+    <tr>
+      <th>Gria1</th>
+      <td>0.833676</td>
+    </tr>
+    <tr>
+      <th>Fam107a</th>
+      <td>0.825462</td>
+    </tr>
+    <tr>
+      <th>Hba-a2</th>
+      <td>0.821355</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect detecition visually by using the &quot;plot_profiles function for first 25 SVG</span>
+
+<span class="n">pltargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;magma&quot;</span><span class="p">,</span>
+                <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+<span class="c1"># plot the profiles</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">plot_profiles</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">cnt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">top_profiles</span><span class="p">],</span>
+                          <span class="n">crd</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">real_crd</span><span class="p">,</span>
+                          <span class="n">rank_values</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">top_profiles</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+                          <span class="n">pltargs</span> <span class="o">=</span> <span class="n">pltargs</span><span class="p">,</span>
+                         <span class="p">)</span>
+<span class="c1"># plt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/Visium_head.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Spatially_variable_gene_Application_with_new_data_16_0.png" src="../_images/Spatially_variable_gene_Application_with_new_data_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect detecition visually by using the &quot;plot_profiles function for last 25 SVG</span>
+
+<span class="n">pltargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;magma&quot;</span><span class="p">,</span>
+                <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+<span class="c1"># plot the profiles</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">plot_profiles</span><span class="p">(</span><span class="n">cnt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">cnt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">tail_profiles</span><span class="p">],</span>
+                          <span class="n">crd</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">real_crd</span><span class="p">,</span>
+                          <span class="n">rank_values</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tail_profiles</span><span class="p">,:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+                          <span class="n">pltargs</span> <span class="o">=</span> <span class="n">pltargs</span><span class="p">,</span>
+                         <span class="p">)</span>
+<span class="c1"># plt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/Visium_tail.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Spatially_variable_gene_Application_with_new_data_17_0.png" src="../_images/Spatially_variable_gene_Application_with_new_data_17_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Reproducibility%20with%20original%20data.html" class="btn btn-neutral float-left" title="Reproducibility with original data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

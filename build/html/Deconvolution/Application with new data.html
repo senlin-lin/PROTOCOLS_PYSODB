@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application with new data &mdash; PROTOCOLS_PYSODB 1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Integration" href="../Integration/Integration.html" />
+    <link rel="prev" title="Reproducibility with original data" href="Reproducibility%20with%20original%20data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PROTOCOLS_PYSODB
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Deconvolution.html">Deconvolution</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data.html">Reproducibility with original data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Application with new data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Load-a-single-cell-dataset">Load a single cell dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Perform-Tangram-for-alignment">Perform Tangram for alignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROTOCOLS_PYSODB</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Deconvolution.html">Deconvolution</a></li>
+      <li class="breadcrumb-item active">Application with new data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Deconvolution/Application with new data.ipynb.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Application-with-new-data">
+<h1>Application with new data<a class="headerlink" href="#Application-with-new-data" title="此标题的永久链接"></a></h1>
+<p>This tutorial demonstrates deconvolution on new ST PDAC data using SODB and Tangram.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://squidpy.readthedocs.io/en/stable/external_tutorials/tutorial_tangram.html">https://squidpy.readthedocs.io/en/stable/external_tutorials/tutorial_tangram.html</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<p>（需要增加单细胞数据链接）</p>
+<section id="Import-packages-and-set-configurations">
+<h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import several Python packages, including:</span>
+<span class="c1"># scanpy: a Python package for single-cell RNA sequencing analysis</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="c1"># squidpy: a Python package for spatial transcriptomics analysis</span>
+<span class="kn">import</span> <span class="nn">squidpy</span> <span class="k">as</span> <span class="nn">sq</span>
+<span class="c1"># numpy: a Python package for scientific computing with arrays</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># pandas: a Python package for data manipulation and analysis</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># anndata: a Python package for handling annotated data objects in genomics</span>
+<span class="kn">import</span> <span class="nn">anndata</span> <span class="k">as</span> <span class="nn">ad</span>
+<span class="c1"># pathlib: a Python module for working with file system paths</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="c1"># matplotlib: a Python plotting library</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="c1"># skimage: a Python package for image processing</span>
+<span class="kn">import</span> <span class="nn">skimage</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import tangram for spatial deconvolution</span>
+<span class="kn">import</span> <span class="nn">tangram</span> <span class="k">as</span> <span class="nn">tg</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a header message, and the version of the squidpy and tangram packages</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">print_header</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;squidpy==</span><span class="si">{</span><span class="n">sq</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tangram==</span><span class="si">{</span><span class="n">tg</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+scanpy==1.9.1 anndata==0.8.0 umap==0.5.3 numpy==1.22.4 scipy==1.9.3 pandas==1.5.1 scikit-learn==1.1.3 statsmodels==0.13.5 python-igraph==0.10.2 pynndescent==0.5.8
+squidpy==1.2.3
+tangram==1.0.3
+</pre></div></div>
+</div>
+</section>
+<section id="Load-a-single-cell-dataset">
+<h2>Load a single cell dataset<a class="headerlink" href="#Load-a-single-cell-dataset" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use read_csv to load &quot;pd_sc&quot; and &quot;pd_sc_meta&quot;</span>
+<span class="n">pd_sc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pdac/sc_data.csv&#39;</span><span class="p">)</span>
+<span class="n">pd_sc_meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/pdac/sc_meta.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set index using the &#39;Unnamed: 0&#39; column for &quot;pd_sc&quot;</span>
+<span class="n">pd_sc</span> <span class="o">=</span> <span class="n">pd_sc</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set index using the &#39;Cell&#39; column for &quot;pd_sc_meta&quot;</span>
+<span class="n">pd_sc_meta</span> <span class="o">=</span> <span class="n">pd_sc_meta</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Cell&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converte pandas&#39;s dataframes into numpy arrays</span>
+<span class="n">sc_genes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd_sc</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">sc_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd_sc</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="c1"># Transpose array</span>
+<span class="n">sc_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pd_sc</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize an AnnData object using &quot;sc_X&quot;, &quot;sc_genes&quot; and &quot;sc_obs&quot;</span>
+<span class="n">adata_sc</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">sc_X</span><span class="p">)</span>
+<span class="n">adata_sc</span><span class="o">.</span><span class="n">var_names</span> <span class="o">=</span> <span class="n">sc_genes</span>
+<span class="n">adata_sc</span><span class="o">.</span><span class="n">obs_names</span> <span class="o">=</span> <span class="n">sc_obs</span>
+<span class="c1"># Assign the cell type labels to &quot;adata_sc.obs[&#39;CellType&#39;]&quot;</span>
+<span class="n">adata_sc</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;CellType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_sc_meta</span><span class="p">[</span><span class="s1">&#39;Cell_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/tmp/ipykernel_119901/662840930.py:2: FutureWarning: X.dtype being converted to np.float32 from float64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata_sc = ad.AnnData(sc_X)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print out the metadata of adata_sc</span>
+<span class="n">adata_sc</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+AnnData object with n_obs × n_vars = 1926 × 19104
+    obs: &#39;CellType&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
+<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
+<span class="c1"># Pysodb is a Python package that provides a set of tools for working with SODB databases.</span>
+<span class="c1"># SODB is a format used to store data in memory-mapped files for efficient access and querying.</span>
+<span class="c1"># This package allows users to interact with SODB files using Python.</span>
+<span class="kn">import</span> <span class="nn">pysodb</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialization</span>
+<span class="n">sodb</span> <span class="o">=</span> <span class="n">pysodb</span><span class="o">.</span><span class="n">SODB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the name of the dataset_name and experiment_name</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;moncada2020integrating&#39;</span>
+<span class="n">experiment_name</span> <span class="o">=</span> <span class="s1">&#39;GSM3036911_spatial_transcriptomics&#39;</span>
+<span class="c1"># Load a specific experiment</span>
+<span class="c1"># It takes two arguments: the name of the dataset and the name of the experiment to load.</span>
+<span class="c1"># Two arguments are available at https://gene.ai.tencent.com/SpatialOmics/.</span>
+<span class="n">adata_st</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span><span class="n">experiment_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+download experiment[GSM3036911_spatial_transcriptomics] in dataset[moncada2020integrating]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 25.4M/25.4M [00:13&lt;00:00, 2.00MB/s]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+load experiment[GSM3036911_spatial_transcriptomics] in dataset[moncada2020integrating]
+</pre></div></div>
+</div>
+</section>
+<section id="Preparation">
+<h2>Preparation<a class="headerlink" href="#Preparation" title="此标题的永久链接"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform differential gene expression analysis across &#39;CellType&#39; in &#39;adata_sc&#39;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata_sc</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;CellType&quot;</span><span class="p">,</span> <span class="n">use_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+WARNING: Default of the method has been changed to &#39;t-test&#39; from &#39;t-test_overestim_var&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Pandas DataFrame called &quot;markers_df&quot; by extracting the top 100 differentially expressed genes from &#39;adata_sc&#39;</span>
+<span class="n">markers_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adata_sc</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s2">&quot;rank_genes_groups&quot;</span><span class="p">][</span><span class="s2">&quot;names&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="p">:]</span>
+<span class="c1"># Create a NumPy array called &quot;genes_sc&quot; by extracting the unique values from the &quot;value&quot; column of a melted version of the &quot;markers_df&quot;</span>
+<span class="n">genes_sc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">markers_df</span><span class="o">.</span><span class="n">melt</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># Extracte the names of genes from &quot;adata_st&quot;</span>
+<span class="n">genes_st</span> <span class="o">=</span> <span class="n">adata_st</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># Creates a Python list called &quot;genes&quot;</span>
+<span class="c1"># Contain the intersection of genes identified as differentially expressed in  &quot;genes_sc&quot; and genes detected in &quot;genes_st&quot;.</span>
+<span class="n">genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">genes_sc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">genes_st</span><span class="p">)))</span>
+<span class="c1"># The length of &quot;genes&quot;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1133
+</pre></div></div>
+</div>
+</section>
+<section id="Perform-Tangram-for-alignment">
+<h2>Perform Tangram for alignment<a class="headerlink" href="#Perform-Tangram-for-alignment" title="此标题的永久链接"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the Tangram to align the gene expression profiles of &quot;adata_sc&quot; and &quot;adata_st&quot; based on the shared set of genes identified by the intersection of &quot;genes_sc&quot; and &quot;genes_st&quot;.</span>
+<span class="n">tg</span><span class="o">.</span><span class="n">pp_adatas</span><span class="p">(</span><span class="n">adata_sc</span><span class="p">,</span> <span class="n">adata_st</span><span class="p">,</span> <span class="n">genes</span><span class="o">=</span><span class="n">genes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+INFO:root:1098 training genes are saved in `uns``training_genes` of both single cell and spatial Anndatas.
+INFO:root:13775 overlapped genes are saved in `uns``overlap_genes` of both single cell and spatial Anndatas.
+INFO:root:uniform based density prior is calculated and saved in `obs``uniform_density` of the spatial Anndata.
+INFO:root:rna count based density prior is calculated and saved in `obs``rna_count_based_density` of the spatial Anndata.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the map_cells_to_space function from the tangram to map cells from &quot;adata_sc&quot;)&quot; onto &quot;adata_st&quot;.</span>
+<span class="c1"># The mapping use &quot;cells&quot; mode, which assign each cell from adata_sc to a location within the spatial transcriptomics space based on its gene expression profile.</span>
+<span class="n">ad_map</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">map_cells_to_space</span><span class="p">(</span>
+    <span class="n">adata_sc</span><span class="p">,</span>
+    <span class="n">adata_st</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;cells&quot;</span><span class="p">,</span>
+    <span class="c1"># target_count=adata_st.obs.cell_count.sum(),</span>
+    <span class="c1"># density_prior=np.array(adata_st.obs.cell_count) / adata_st.obs.cell_count.sum(),</span>
+    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+INFO:root:Allocate tensors for mapping.
+INFO:root:Begin training with 1098 genes and rna_count_based density_prior in cells mode...
+INFO:root:Printing scores every 100 epochs.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Score: 0.293, KL reg: 0.029
+Score: 0.548, KL reg: 0.001
+Score: 0.550, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+Score: 0.551, KL reg: 0.001
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+INFO:root:Saving results..
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Project &quot;CellType&quot; annotations from a single-cell RNA sequencing (scRNA-seq) dataset onto a spatial transcriptomics dataset, based on a previously computed cell-to-space mapping</span>
+<span class="n">tg</span><span class="o">.</span><span class="n">project_cell_annotations</span><span class="p">(</span><span class="n">ad_map</span><span class="p">,</span> <span class="n">adata_st</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="s2">&quot;CellType&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+INFO:root:spatial prediction dataframe is saved in `obsm` `tangram_ct_pred` of the spatial AnnData.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create new columns in &quot;adata_st.obs&quot; that correspond to the values in &quot;adata_st.obsm[&#39;tangram_ct_pred&#39;]&quot;</span>
+<span class="k">for</span> <span class="n">ct</span> <span class="ow">in</span> <span class="n">adata_st</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;tangram_ct_pred&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">adata_st</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">ct</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">adata_st</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;tangram_ct_pred&#39;</span><span class="p">][</span><span class="n">ct</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print adata_st.obsm[&#39;tangram_ct_pred&#39;]</span>
+<span class="n">adata_st</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;tangram_ct_pred&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Acinar cells</th>
+      <th>Ductal</th>
+      <th>Cancer clone A</th>
+      <th>Cancer clone B</th>
+      <th>mDCs</th>
+      <th>Tuft cells</th>
+      <th>pDCs</th>
+      <th>Endocrine cells</th>
+      <th>Endothelial cells</th>
+      <th>Macrophages</th>
+      <th>Mast cells</th>
+      <th>T cells   NK cells</th>
+      <th>Monocytes</th>
+      <th>RBCs</th>
+      <th>Fibroblasts</th>
+    </tr>
+    <tr>
+      <th>spots</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10x10</th>
+      <td>0.006444</td>
+      <td>4.729997</td>
+      <td>0.110092</td>
+      <td>0.395633</td>
+      <td>0.496347</td>
+      <td>0.013628</td>
+      <td>0.054951</td>
+      <td>0.005291</td>
+      <td>0.094123</td>
+      <td>0.333470</td>
+      <td>0.052907</td>
+      <td>0.180649</td>
+      <td>0.056653</td>
+      <td>0.026625</td>
+      <td>0.037472</td>
+    </tr>
+    <tr>
+      <th>10x13</th>
+      <td>0.002064</td>
+      <td>4.798337</td>
+      <td>0.283907</td>
+      <td>0.073102</td>
+      <td>0.127184</td>
+      <td>0.064640</td>
+      <td>0.024021</td>
+      <td>0.005458</td>
+      <td>0.016583</td>
+      <td>0.055181</td>
+      <td>0.039184</td>
+      <td>0.095868</td>
+      <td>0.050412</td>
+      <td>0.010460</td>
+      <td>0.005281</td>
+    </tr>
+    <tr>
+      <th>10x14</th>
+      <td>0.013010</td>
+      <td>4.492909</td>
+      <td>0.050775</td>
+      <td>0.310652</td>
+      <td>0.159801</td>
+      <td>0.016485</td>
+      <td>0.087723</td>
+      <td>0.003860</td>
+      <td>0.034731</td>
+      <td>0.128919</td>
+      <td>0.092330</td>
+      <td>0.058362</td>
+      <td>0.000047</td>
+      <td>0.011527</td>
+      <td>0.003467</td>
+    </tr>
+    <tr>
+      <th>10x15</th>
+      <td>0.032894</td>
+      <td>3.715882</td>
+      <td>0.069235</td>
+      <td>0.112658</td>
+      <td>0.133705</td>
+      <td>0.064493</td>
+      <td>0.062851</td>
+      <td>0.004080</td>
+      <td>0.051006</td>
+      <td>0.099198</td>
+      <td>0.036446</td>
+      <td>0.060453</td>
+      <td>0.105931</td>
+      <td>0.021350</td>
+      <td>0.003964</td>
+    </tr>
+    <tr>
+      <th>10x16</th>
+      <td>0.007706</td>
+      <td>3.578493</td>
+      <td>0.032234</td>
+      <td>0.034689</td>
+      <td>0.000062</td>
+      <td>0.087510</td>
+      <td>0.068135</td>
+      <td>0.004603</td>
+      <td>0.007516</td>
+      <td>0.027256</td>
+      <td>0.045591</td>
+      <td>0.283022</td>
+      <td>0.016175</td>
+      <td>0.003633</td>
+      <td>0.008083</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9x29</th>
+      <td>0.003938</td>
+      <td>4.518909</td>
+      <td>0.000118</td>
+      <td>0.422693</td>
+      <td>0.190997</td>
+      <td>0.011341</td>
+      <td>0.017632</td>
+      <td>0.005462</td>
+      <td>0.057274</td>
+      <td>0.027889</td>
+      <td>0.031566</td>
+      <td>0.149288</td>
+      <td>0.000031</td>
+      <td>0.005100</td>
+      <td>0.000124</td>
+    </tr>
+    <tr>
+      <th>9x30</th>
+      <td>0.003119</td>
+      <td>2.801348</td>
+      <td>0.038468</td>
+      <td>0.479157</td>
+      <td>0.111810</td>
+      <td>0.071946</td>
+      <td>0.017383</td>
+      <td>0.005246</td>
+      <td>0.017669</td>
+      <td>0.057799</td>
+      <td>0.117123</td>
+      <td>0.168534</td>
+      <td>0.080440</td>
+      <td>0.002571</td>
+      <td>0.008973</td>
+    </tr>
+    <tr>
+      <th>9x31</th>
+      <td>0.008436</td>
+      <td>1.421516</td>
+      <td>0.347862</td>
+      <td>0.302915</td>
+      <td>0.107531</td>
+      <td>0.017159</td>
+      <td>0.073046</td>
+      <td>0.003994</td>
+      <td>0.008288</td>
+      <td>0.380764</td>
+      <td>0.000079</td>
+      <td>0.168885</td>
+      <td>0.022301</td>
+      <td>0.003253</td>
+      <td>0.005747</td>
+    </tr>
+    <tr>
+      <th>9x32</th>
+      <td>0.055819</td>
+      <td>2.081752</td>
+      <td>0.022799</td>
+      <td>0.000409</td>
+      <td>0.049651</td>
+      <td>0.033693</td>
+      <td>0.000310</td>
+      <td>0.008593</td>
+      <td>0.030207</td>
+      <td>0.070957</td>
+      <td>0.031255</td>
+      <td>0.084072</td>
+      <td>0.022005</td>
+      <td>0.003457</td>
+      <td>0.002862</td>
+    </tr>
+    <tr>
+      <th>9x33</th>
+      <td>0.009596</td>
+      <td>1.582193</td>
+      <td>0.001093</td>
+      <td>0.143309</td>
+      <td>0.026752</td>
+      <td>0.037170</td>
+      <td>0.016511</td>
+      <td>0.005122</td>
+      <td>0.016078</td>
+      <td>0.027282</td>
+      <td>0.022464</td>
+      <td>0.042276</td>
+      <td>0.031942</td>
+      <td>0.019758</td>
+      <td>0.000276</td>
+    </tr>
+  </tbody>
+</table>
+<p>428 rows × 15 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a spatial scatter plot showing the distribution of different cell types</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">adata_st</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;spatial&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Acinar cells&#39;</span><span class="p">,</span><span class="s1">&#39;Cancer clone A&#39;</span><span class="p">,</span><span class="s1">&#39;Cancer clone B&#39;</span><span class="p">,</span><span class="s1">&#39;Ductal&#39;</span><span class="p">],</span>
+    <span class="c1"># color=&#39;leiden&#39;</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Deconvolution_Application_with_new_data_27_0.png" src="../_images/Deconvolution_Application_with_new_data_27_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="Reproducibility%20with%20original%20data.html" class="btn btn-neutral float-left" title="Reproducibility with original data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Integration/Integration.html" class="btn btn-neutral float-right" title="Integration" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, LINSENLIN.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
