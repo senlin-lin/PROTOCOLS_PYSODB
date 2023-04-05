@@ -13,7 +13,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This tutorial demonstrates how to utilize SOVIew (a spatial omics visualization tool) to quickly visualize data fetched by pysodb, helping users quickly determine what is the tissue organization of the data, and avoiding time-consuming preprocessing, clustering, etc."
+    "This tutorial demonstrates how to utilize SOVIew (a spatial omics visualization tool) to quickly visualize data fetched by Pysodb, helping users quickly determine what is the tissue organization of the data, and avoiding time-consuming preprocessing, clustering, etc."
    ]
   },
   {
@@ -21,7 +21,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## load data using pysodb"
+    "## load data using Pysodb"
    ]
   },
   {
@@ -178,7 +178,7 @@
     }
    ],
    "source": [
-    "# Visualize data fetched by pysodb by utilizing SOVIew\n",
+    "# Visualize data fetched by Pysodb by utilizing SOVIew\n",
     "SOView.SOViewer_plot(\n",
     "    adata = adata, # the data to plot\n",
     "    #save = f'figures/{dataset_name}_{experiment_name}', # save the result to specified path or don't save (None)\n",

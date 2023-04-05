@@ -17,11 +17,16 @@ Protocols - Streamline development of spatial omics analysis tools using SODB!
    :maxdepth: 2
    :caption: Tutorial:
 
-   Alignment/Alignment
-   Deconvolution/Deconvolution
-   Integration/Integration
-   Pseudo-spatiotemporal analysis/Pseudo-spatiotemporal analysis
    SOView/SOView
+   Spatially variable gene detection/Spatially variable gene detection
    Spatial clustering/Spatial clustering
-   Spatially variable gene/Spatially variable gene
+   Pseudo-spatiotemporal analysis/Pseudo-spatiotemporal analysis
+   Spatial data integration/Spatial data integration
+   Spatial data alignment/Spatial data alignment
+   Spatial spot deconvolution/Spatial spot deconvolution
+   
+   
+   
+   
+   
 

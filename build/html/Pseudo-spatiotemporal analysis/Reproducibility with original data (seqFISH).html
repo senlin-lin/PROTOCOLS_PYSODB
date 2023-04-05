@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Application with new data" href="Application%20with%20new%20data.html" />
-    <link rel="prev" title="Reproducibility with original data (DLPFC)" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" /> 
+    <link rel="next" title="Reproducibility with original data (DLPFC)" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" />
+    <link rel="prev" title="Installation" href="Installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,27 +47,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene%20detection/Spatially%20variable%20gene%20detection.html">Spatially variable gene detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html">Reproducibility with original data (DLPFC)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Reproducibility with original data (seqFISH)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-Pysodb">Streamline development of loading spatial data with Pysodb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">Perform SpaceFlow for pseudo-spatiotemporal analysis</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html">Reproducibility with original data (DLPFC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html">Application with new data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">Perform SpaceFlow for pseudo-spatiotemporal analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20integration/Spatial%20data%20integration.html">Spatial data integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20alignment/Spatial%20data%20alignment.html">Spatial data alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20spot%20deconvolution/Spatial%20spot%20deconvolution.html">Spatial spot deconvolution</a></li>
 </ul>
 
         </div>
@@ -97,9 +94,9 @@
              
   <section id="Reproducibility-with-original-data-(seqFISH)">
 <h1>Reproducibility with original data (seqFISH)<a class="headerlink" href="#Reproducibility-with-original-data-(seqFISH)" title="此标题的永久链接"></a></h1>
-<p>This tutorial demonstrates how to pseudo-spatiotemporal analysis on seqFISH mouse embryo data using SODB and SpaceFlow.</p>
+<p>This tutorial demonstrates how to pseudo-spatiotemporal analysis on seqFISH mouse embryo data using Pysodb and SpaceFlow.</p>
 <p>A reference paper can be found at <a class="reference external" href="https://www.nature.com/articles/s41467-022-31739-w">https://www.nature.com/articles/s41467-022-31739-w</a>.</p>
-<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb">https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb">https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb</a>. At the same time, the way of loadding data is modified by using Pysodb.</p>
 <section id="Import-packages-and-set-configurations">
 <h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
@@ -122,7 +119,7 @@
 <span class="c1"># scanpy (imported as sc) is a package for single-cell RNA sequencing analysis.</span>
 <span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
 <span class="c1"># matplotlib.pyplot (imported as plt) is a package for data visualization.</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#import matplotlib.pyplot as plt</span>
 </pre></div>
 </div>
 </div>
@@ -149,8 +146,8 @@
 </div>
 </div>
 </section>
-<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
-<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<section id="Streamline-development-of-loading-spatial-data-with-Pysodb">
+<h2>Streamline development of loading spatial data with Pysodb<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-Pysodb" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -208,7 +205,7 @@ load experiment[lohoff2020highly_seqFISH_mouse_Gastrulation] in dataset[lohoff20
 <section id="Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">
 <h2>Perform SpaceFlow for pseudo-spatiotemporal analysis<a class="headerlink" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create SpaceFlow Object</span>
@@ -223,7 +220,7 @@ load experiment[lohoff2020highly_seqFISH_mouse_Gastrulation] in dataset[lohoff20
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocess data</span>
@@ -233,7 +230,7 @@ load experiment[lohoff2020highly_seqFISH_mouse_Gastrulation] in dataset[lohoff20
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a deep graph network model</span>
@@ -259,65 +256,65 @@ load experiment[lohoff2020highly_seqFISH_mouse_Gastrulation] in dataset[lohoff20
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Epoch 2/1000, Loss: 1.4433507919311523
-Epoch 12/1000, Loss: 1.1957049369812012
+Epoch 12/1000, Loss: 1.1957048177719116
 Epoch 22/1000, Loss: 0.899651050567627
-Epoch 32/1000, Loss: 0.5220378637313843
-Epoch 42/1000, Loss: 0.25793352723121643
-Epoch 52/1000, Loss: 0.1524793654680252
-Epoch 62/1000, Loss: 0.11322928965091705
-Epoch 72/1000, Loss: 0.0992421880364418
-Epoch 82/1000, Loss: 0.08421209454536438
-Epoch 92/1000, Loss: 0.08441481739282608
-Epoch 102/1000, Loss: 0.07488371431827545
-Epoch 112/1000, Loss: 0.07958266884088516
-Epoch 122/1000, Loss: 0.07067456096410751
-Epoch 132/1000, Loss: 0.07084371149539948
-Epoch 142/1000, Loss: 0.06988966464996338
-Epoch 152/1000, Loss: 0.06983029097318649
-Epoch 162/1000, Loss: 0.07103952765464783
-Epoch 172/1000, Loss: 0.06583818048238754
-Epoch 182/1000, Loss: 0.0638948529958725
-Epoch 192/1000, Loss: 0.06412710249423981
-Epoch 202/1000, Loss: 0.06145592778921127
-Epoch 212/1000, Loss: 0.06415022164583206
-Epoch 222/1000, Loss: 0.0672992393374443
-Epoch 232/1000, Loss: 0.06305063515901566
-Epoch 242/1000, Loss: 0.057416580617427826
-Epoch 252/1000, Loss: 0.05533405393362045
-Epoch 262/1000, Loss: 0.062475450336933136
-Epoch 272/1000, Loss: 0.06412672251462936
-Epoch 282/1000, Loss: 0.05803115665912628
-Epoch 292/1000, Loss: 0.056337498128414154
-Epoch 302/1000, Loss: 0.05895162373781204
-Epoch 312/1000, Loss: 0.05637642368674278
-Epoch 322/1000, Loss: 0.05779914930462837
+Epoch 32/1000, Loss: 0.5220355987548828
+Epoch 42/1000, Loss: 0.25792792439460754
+Epoch 52/1000, Loss: 0.15247754752635956
+Epoch 62/1000, Loss: 0.11323283612728119
+Epoch 72/1000, Loss: 0.09924617409706116
+Epoch 82/1000, Loss: 0.08421587944030762
+Epoch 92/1000, Loss: 0.08441664278507233
+Epoch 102/1000, Loss: 0.07488397508859634
+Epoch 112/1000, Loss: 0.07958334684371948
+Epoch 122/1000, Loss: 0.07067480683326721
+Epoch 132/1000, Loss: 0.07085031270980835
+Epoch 142/1000, Loss: 0.06988634169101715
+Epoch 152/1000, Loss: 0.06983151286840439
+Epoch 162/1000, Loss: 0.07103468477725983
+Epoch 172/1000, Loss: 0.06584274768829346
+Epoch 182/1000, Loss: 0.06390106678009033
+Epoch 192/1000, Loss: 0.06413406133651733
+Epoch 202/1000, Loss: 0.06146261841058731
+Epoch 212/1000, Loss: 0.06414571404457092
+Epoch 222/1000, Loss: 0.06728968769311905
+Epoch 232/1000, Loss: 0.0630531907081604
+Epoch 242/1000, Loss: 0.05740426480770111
+Epoch 252/1000, Loss: 0.05534536764025688
+Epoch 262/1000, Loss: 0.06245315819978714
+Epoch 272/1000, Loss: 0.06413358449935913
+Epoch 282/1000, Loss: 0.058028869330883026
+Epoch 292/1000, Loss: 0.05633276700973511
+Epoch 302/1000, Loss: 0.05898240953683853
+Epoch 312/1000, Loss: 0.056370943784713745
+Epoch 322/1000, Loss: 0.05779092013835907
 Training complete!
 Embedding is saved at ./embedding.tsv
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[-0.5199552 , -0.17967458,  0.7573716 , ..., -0.1183727 ,
-        -0.00703658,  2.489347  ],
-       [-0.46287113, -0.19304845,  1.0321252 , ..., -0.19984664,
-        -0.06295489,  2.3953645 ],
-       [-0.52252036,  0.6154977 ,  0.13132505, ..., -0.03820756,
-        -0.00726214,  2.0950577 ],
+array([[-0.5202136 , -0.17956705,  0.7582989 , ..., -0.1178573 ,
+        -0.00734187,  2.4900703 ],
+       [-0.46302137, -0.19299765,  1.0326352 , ..., -0.19934863,
+        -0.06319354,  2.3966684 ],
+       [-0.5225591 ,  0.6163565 ,  0.13151401, ..., -0.03753699,
+        -0.00742718,  2.095408  ],
        ...,
-       [-0.23219149,  0.9938329 , -0.00803952, ..., -0.03670396,
-         0.5799729 ,  1.5172849 ],
-       [-0.32494605, -0.07422221,  1.0354829 , ..., -0.13825543,
-         0.98951554,  2.3516695 ],
-       [-0.2175944 ,  0.82438576,  0.0362829 , ..., -0.0678086 ,
-         0.89376557,  1.5167462 ]], dtype=float32)
+       [-0.23238094,  0.99448997, -0.00804079, ..., -0.03581214,
+         0.579624  ,  1.5177417 ],
+       [-0.32503372, -0.07396829,  1.0361072 , ..., -0.13758945,
+         0.98967546,  2.352452  ],
+       [-0.21778385,  0.82494813,  0.03623015, ..., -0.06693349,
+         0.8934428 ,  1.5172613 ]], dtype=float32)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Idenfify the spatiotemporal patterns through pseudo-Spatiotemporal Map (pSM)</span>
@@ -335,7 +332,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column called &#39;pspace&#39; from pSM values of cells or spots.</span>
@@ -344,41 +341,65 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize spatial coordinates in a scatterplot colored by &#39;pspace&#39;</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;spatial&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;pspace&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">color_map</span><span class="o">=</span><span class="n">cmp_pspace</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_pspace.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_pspace.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-<br/><br/></pre></div>
+<span class="c1">#plt.savefig(&#39;figures/seqFISH_pspace.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
+<span class="c1">#plt.savefig(&#39;figures/seqFISH_pspace.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
+</pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(-2.802851333716996,
+ 2.7737768053548297,
+ -3.8412926523589537,
+ 3.841292652358961)
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_0.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_0.png" />
+<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_1.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_18_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize spatial coordinates in a scatterplot colored by &#39;celltype_mapped_refined&#39;</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;spatial&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;celltype_mapped_refined&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_ct.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/seqFISH_ct.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;figures/seqFISH_ct.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
+<span class="c1">#plt.savefig(&#39;figures/seqFISH_ct.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(-2.802851333716996,
+ 2.7737768053548297,
+ -3.8412926523589537,
+ 3.841292652358961)
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_0.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_0.png" />
+<img alt="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_1.png" src="../_images/Pseudo-spatiotemporal_analysis_Reproducibility_with_original_data_%28seqFISH%29_19_1.png" />
 </div>
 </div>
 </section>
@@ -388,8 +409,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" class="btn btn-neutral float-left" title="Reproducibility with original data (DLPFC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Application%20with%20new%20data.html" class="btn btn-neutral float-right" title="Application with new data" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" class="btn btn-neutral float-right" title="Reproducibility with original data (DLPFC)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

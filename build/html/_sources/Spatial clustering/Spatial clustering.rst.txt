@@ -8,4 +8,5 @@ Spatial clustering
    Installation
    Reproducibility with original data
    Application with new data
+   Application with new data (3D)
 

@@ -47,10 +47,6 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="SOView.html">SOView</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10x.html">10x</a></li>
@@ -58,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Dataset5_MS_process.html">Dataset5_MS_process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Fu2021Unsupervised.html">Fu2021Unsupervised</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">lohoff2021integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-data-using-pysodb">load data using pysodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-data-using-Pysodb">load data using Pysodb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plot-SOView">plot SOView</a></li>
 </ul>
 </li>
@@ -74,8 +70,12 @@
 <li class="toctree-l2"><a class="reference internal" href="Wang2018three.html">Wang2018three</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene%20detection/Spatially%20variable%20gene%20detection.html">Spatially variable gene detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20integration/Spatial%20data%20integration.html">Spatial data integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20alignment/Spatial%20data%20alignment.html">Spatial data alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20spot%20deconvolution/Spatial%20spot%20deconvolution.html">Spatial spot deconvolution</a></li>
 </ul>
 
         </div>
@@ -105,9 +105,9 @@
              
   <section id="lohoff2021integration">
 <h1>lohoff2021integration<a class="headerlink" href="#lohoff2021integration" title="此标题的永久链接"></a></h1>
-<p>This tutorial demonstrates how to utilize SOVIew (a spatial omics visualization tool) to quickly visualize data fetched by pysodb, helping users quickly determine what is the tissue organization of the data, and avoiding time-consuming preprocessing, clustering, etc.</p>
-<section id="load-data-using-pysodb">
-<h2>load data using pysodb<a class="headerlink" href="#load-data-using-pysodb" title="此标题的永久链接"></a></h2>
+<p>This tutorial demonstrates how to utilize SOVIew (a spatial omics visualization tool) to quickly visualize data fetched by Pysodb, helping users quickly determine what is the tissue organization of the data, and avoiding time-consuming preprocessing, clustering, etc.</p>
+<section id="load-data-using-Pysodb">
+<h2>load data using Pysodb<a class="headerlink" href="#load-data-using-Pysodb" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -201,7 +201,7 @@ squidpy==1.1.2
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize data fetched by pysodb by utilizing SOVIew</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize data fetched by Pysodb by utilizing SOVIew</span>
 <span class="n">SOView</span><span class="o">.</span><span class="n">SOViewer_plot</span><span class="p">(</span>
     <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">,</span> <span class="c1"># the data to plot</span>
     <span class="c1">#save = f&#39;figures/{dataset_name}_{experiment_name}&#39;, # save the result to specified path or don&#39;t save (None)</span>

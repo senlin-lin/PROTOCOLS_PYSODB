@@ -47,14 +47,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="SOView.html">SOView</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Installing-softwares-and-tools">Installing softwares and tools</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#1.-The-first-step-is-to-install-Anaconda,-Visual-Studio-Code-and-CUDA-in-advance.">1. The first step is to install Anaconda, Visual Studio Code and CUDA in advance.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#1.-The-first-step-is-to-install-Visual-Studio-Code,-Conda-and-Jupyter-notebook-in-advance.">1. The first step is to install Visual Studio Code, Conda and Jupyter notebook in advance.</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#2.-Launch-Visual-Studio-Code-and-open-a-terminal-window.">2. Launch Visual Studio Code and open a terminal window.</a></li>
 </ul>
 </li>
@@ -67,10 +63,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#8.-Install-SOView-package-from-source-code">8. Install SOView package from source code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Installation-pysobd">Installation pysobd</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#9.-Clone-pycodb-code">9. Clone pycodb code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#10.-Open-the-pycodb-directory">10. Open the pycodb directory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#11.-Install-a-pysodb-package-from-source-code">11. Install a pysodb package from source code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Installation-Pysodb">Installation Pysodb</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#9.-Clone-Pysodb-code">9. Clone Pysodb code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#10.-Open-the-Pysodb-directory">10. Open the Pysodb directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#11.-Install-a-Pysodb-package-from-source-code">11. Install a Pysodb package from source code</a></li>
 </ul>
 </li>
 </ul>
@@ -92,8 +88,12 @@
 <li class="toctree-l2"><a class="reference internal" href="Wang2018three.html">Wang2018three</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene%20detection/Spatially%20variable%20gene%20detection.html">Spatially variable gene detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20integration/Spatial%20data%20integration.html">Spatial data integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20alignment/Spatial%20data%20alignment.html">Spatial data alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20spot%20deconvolution/Spatial%20spot%20deconvolution.html">Spatial spot deconvolution</a></li>
 </ul>
 
         </div>
@@ -123,13 +123,13 @@
              
   <section id="Installation">
 <h1>Installation<a class="headerlink" href="#Installation" title="此标题的永久链接"></a></h1>
-<p>This tutorial demonstrates how to install pycodb on SOVIew (a spatial omics visualization tool).</p>
+<p>This tutorial demonstrates how to install Pysodb on SOVIew (a spatial omics visualization tool).</p>
 <p>Reference tutorials can be found at <a class="reference external" href="https://soview-doc.readthedocs.io/en/latest/index.html">https://soview-doc.readthedocs.io/en/latest/index.html</a> and <a class="reference external" href="https://github.com/TencentAILabHealthcare/pysodb">https://github.com/TencentAILabHealthcare/pysodb</a>.</p>
 <section id="Installing-softwares-and-tools">
 <h2>Installing softwares and tools<a class="headerlink" href="#Installing-softwares-and-tools" title="此标题的永久链接"></a></h2>
-<section id="1.-The-first-step-is-to-install-Anaconda,-Visual-Studio-Code-and-CUDA-in-advance.">
-<h3>1. The first step is to install Anaconda, Visual Studio Code and CUDA in advance.<a class="headerlink" href="#1.-The-first-step-is-to-install-Anaconda,-Visual-Studio-Code-and-CUDA-in-advance." title="此标题的永久链接"></a></h3>
-<p>Reference tutorials presents how to install anaconda and Visual Studio Code. And they can be found at <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">https://docs.anaconda.com/anaconda/install/index.html</a> and <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/tasks/integration/vscode/">https://docs.anaconda.com/anaconda/user-guide/tasks/integration/vscode/</a>.</p>
+<section id="1.-The-first-step-is-to-install-Visual-Studio-Code,-Conda-and-Jupyter-notebook-in-advance.">
+<h3>1. The first step is to install Visual Studio Code, Conda and Jupyter notebook in advance.<a class="headerlink" href="#1.-The-first-step-is-to-install-Visual-Studio-Code,-Conda-and-Jupyter-notebook-in-advance." title="此标题的永久链接"></a></h3>
+<p>Reference tutorials presents how to install Visual Studio Code, Conda and Jupyter notebook,respectively. And they can be found at <a class="reference external" href="https://code.visualstudio.com/Docs/setup/setup-overview">https://code.visualstudio.com/Docs/setup/setup-overview</a>, <a class="reference external" href="https://code.visualstudio.com/docs/python/environments#_activating-an-environment-in-the-terminal">https://code.visualstudio.com/docs/python/environments#_activating-an-environment-in-the-terminal</a> and <a class="reference external" href="https://code.visualstudio.com/docs/datascience/data-science-tutorial">https://code.visualstudio.com/docs/datascience/data-science-tutorial</a>.</p>
 </section>
 <section id="2.-Launch-Visual-Studio-Code-and-open-a-terminal-window.">
 <h3>2. Launch Visual Studio Code and open a terminal window.<a class="headerlink" href="#2.-Launch-Visual-Studio-Code-and-open-a-terminal-window." title="此标题的永久链接"></a></h3>
@@ -207,11 +207,11 @@
 </div>
 </section>
 </section>
-<section id="Installation-pysobd">
-<h2>Installation pysobd<a class="headerlink" href="#Installation-pysobd" title="此标题的永久链接"></a></h2>
+<section id="Installation-Pysodb">
+<h2>Installation Pysodb<a class="headerlink" href="#Installation-Pysodb" title="此标题的永久链接"></a></h2>
 <p>Keep the conda environment active</p>
-<section id="9.-Clone-pycodb-code">
-<h3>9. Clone pycodb code<a class="headerlink" href="#9.-Clone-pycodb-code" title="此标题的永久链接"></a></h3>
+<section id="9.-Clone-Pysodb-code">
+<h3>9. Clone Pysodb code<a class="headerlink" href="#9.-Clone-Pysodb-code" title="此标题的永久链接"></a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -222,8 +222,8 @@
 </div>
 <p>If cloning the code fails through git, please download it at <a class="reference external" href="https://github.com/TencentAILabHealthcare/pysodb">https://github.com/TencentAILabHealthcare/pysodb</a>, upload it to the folder created above, and extract it.</p>
 </section>
-<section id="10.-Open-the-pycodb-directory">
-<h3>10. Open the pycodb directory<a class="headerlink" href="#10.-Open-the-pycodb-directory" title="此标题的永久链接"></a></h3>
+<section id="10.-Open-the-Pysodb-directory">
+<h3>10. Open the Pysodb directory<a class="headerlink" href="#10.-Open-the-Pysodb-directory" title="此标题的永久链接"></a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -233,8 +233,8 @@
 </div>
 </div>
 </section>
-<section id="11.-Install-a-pysodb-package-from-source-code">
-<h3>11. Install a pysodb package from source code<a class="headerlink" href="#11.-Install-a-pysodb-package-from-source-code" title="此标题的永久链接"></a></h3>
+<section id="11.-Install-a-Pysodb-package-from-source-code">
+<h3>11. Install a Pysodb package from source code<a class="headerlink" href="#11.-Install-a-Pysodb-package-from-source-code" title="此标题的永久链接"></a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>

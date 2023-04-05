@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="SOView" href="../SOView/SOView.html" />
-    <link rel="prev" title="Reproducibility with original data (seqFISH)" href="Reproducibility%20with%20original%20data%20%28seqFISH%29.html" /> 
+    <link rel="next" title="Spatial data integration" href="../Spatial%20data%20integration/Spatial%20data%20integration.html" />
+    <link rel="prev" title="Reproducibility with original data (DLPFC)" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,24 +47,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene%20detection/Spatially%20variable%20gene%20detection.html">Spatially variable gene detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html">Reproducibility with original data (DLPFC)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28seqFISH%29.html">Reproducibility with original data (seqFISH)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html">Reproducibility with original data (DLPFC)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Application with new data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-Pysodb">Streamline development of loading spatial data with Pysodb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">Perform SpaceFlow for pseudo-spatiotemporal analysis</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatial%20clustering/Spatial%20clustering.html">Spatial clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20integration/Spatial%20data%20integration.html">Spatial data integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20alignment/Spatial%20data%20alignment.html">Spatial data alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20spot%20deconvolution/Spatial%20spot%20deconvolution.html">Spatial spot deconvolution</a></li>
 </ul>
 
         </div>
@@ -94,13 +94,13 @@
              
   <section id="Application-with-new-data">
 <h1>Application with new data<a class="headerlink" href="#Application-with-new-data" title="此标题的永久链接"></a></h1>
-<p>This tutorial demonstrates how to pseudo-spatiotemporal analysis on BaristaSeq mouse visual cortex data using SODB and SpaceFlow.</p>
+<p>This tutorial demonstrates how to pseudo-spatiotemporal analysis on BaristaSeq mouse visual cortex data using Pysodb and SpaceFlow.</p>
 <p>A reference paper can be found at <a class="reference external" href="https://www.nature.com/articles/s41467-022-31739-w">https://www.nature.com/articles/s41467-022-31739-w</a>.</p>
-<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb">https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb">https://github.com/hongleir/SpaceFlow/blob/master/tutorials/seqfish_mouse_embryogenesis.ipynb</a>. At the same time, the way of loadding data is modified by using Pysodb.</p>
 <section id="Import-packages-and-set-configurations">
 <h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the Python warnings module to filter and ignore any warnings that may occur in the program after this point.</span>
@@ -110,7 +110,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import several python packages commonly used in data analysis and visualization.</span>
@@ -126,7 +126,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from SpaceFlow package import SpaceFlow module</span>
@@ -135,7 +135,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports a palettable package</span>
@@ -148,10 +148,10 @@
 </div>
 </div>
 </section>
-<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
-<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<section id="Streamline-development-of-loading-spatial-data-with-Pysodb">
+<h2>Streamline development of loading spatial data with Pysodb<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-Pysodb" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
@@ -163,7 +163,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the sodb object</span>
@@ -172,7 +172,7 @@
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define names of the dataset_name and experiment_name</span>
@@ -195,17 +195,17 @@ load experiment[Slice_1] in dataset[Sun2021Integrating]
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove cells outside the VISp</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove cells belong to the layers &#39;outside_VISp&#39; and &#39;VISp&#39;</span>
 <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;layer&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;outside_VISp&#39;</span><span class="p">]</span>
 <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;layer&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;VISp&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter out genes</span>
@@ -217,7 +217,7 @@ load experiment[Slice_1] in dataset[Sun2021Integrating]
 <section id="Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis">
 <h2>Perform SpaceFlow for pseudo-spatiotemporal analysis<a class="headerlink" href="#Perform-SpaceFlow-for-pseudo-spatiotemporal-analysis" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create SpaceFlow Object</span>
@@ -233,7 +233,7 @@ load experiment[Slice_1] in dataset[Sun2021Integrating]
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocess data</span>
@@ -243,7 +243,7 @@ load experiment[Slice_1] in dataset[Sun2021Integrating]
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a deep graph network model</span>
@@ -271,94 +271,94 @@ load experiment[Slice_1] in dataset[Sun2021Integrating]
 Epoch 2/1000, Loss: 1.4427732229232788
 Epoch 12/1000, Loss: 1.404854416847229
 Epoch 22/1000, Loss: 1.355185866355896
-Epoch 32/1000, Loss: 1.2782429456710815
-Epoch 42/1000, Loss: 1.1435611248016357
-Epoch 52/1000, Loss: 0.9432041049003601
-Epoch 62/1000, Loss: 0.7149054408073425
-Epoch 72/1000, Loss: 0.58223557472229
-Epoch 82/1000, Loss: 0.5121980905532837
-Epoch 92/1000, Loss: 0.4257865846157074
-Epoch 102/1000, Loss: 0.37741923332214355
-Epoch 112/1000, Loss: 0.33436518907546997
-Epoch 122/1000, Loss: 0.31197986006736755
-Epoch 132/1000, Loss: 0.26782554388046265
-Epoch 142/1000, Loss: 0.2229880541563034
-Epoch 152/1000, Loss: 0.2850548326969147
-Epoch 162/1000, Loss: 0.2274121344089508
-Epoch 172/1000, Loss: 0.23494650423526764
-Epoch 182/1000, Loss: 0.19478872418403625
-Epoch 192/1000, Loss: 0.2000330686569214
-Epoch 202/1000, Loss: 0.2025863081216812
-Epoch 212/1000, Loss: 0.1734076291322708
-Epoch 222/1000, Loss: 0.22004571557044983
-Epoch 232/1000, Loss: 0.17177501320838928
-Epoch 242/1000, Loss: 0.2074304223060608
-Epoch 252/1000, Loss: 0.19283580780029297
-Epoch 262/1000, Loss: 0.21319225430488586
-Epoch 272/1000, Loss: 0.17561963200569153
-Epoch 282/1000, Loss: 0.2085377424955368
-Epoch 292/1000, Loss: 0.18256109952926636
-Epoch 302/1000, Loss: 0.17094804346561432
-Epoch 312/1000, Loss: 0.16286028921604156
-Epoch 322/1000, Loss: 0.1542774885892868
-Epoch 332/1000, Loss: 0.1309635192155838
-Epoch 342/1000, Loss: 0.14726147055625916
-Epoch 352/1000, Loss: 0.178929403424263
-Epoch 362/1000, Loss: 0.124812550842762
-Epoch 372/1000, Loss: 0.18574443459510803
-Epoch 382/1000, Loss: 0.17111685872077942
-Epoch 392/1000, Loss: 0.14073777198791504
-Epoch 402/1000, Loss: 0.11059466004371643
-Epoch 412/1000, Loss: 0.16913339495658875
-Epoch 422/1000, Loss: 0.1179017722606659
-Epoch 432/1000, Loss: 0.14716720581054688
-Epoch 442/1000, Loss: 0.1746843159198761
-Epoch 452/1000, Loss: 0.1363046020269394
-Epoch 462/1000, Loss: 0.15643784403800964
-Epoch 472/1000, Loss: 0.11002860963344574
-Epoch 482/1000, Loss: 0.13032789528369904
-Epoch 492/1000, Loss: 0.15090756118297577
-Epoch 502/1000, Loss: 0.10535751283168793
-Epoch 512/1000, Loss: 0.14694352447986603
-Epoch 522/1000, Loss: 0.11958061158657074
-Epoch 532/1000, Loss: 0.13011591136455536
-Epoch 542/1000, Loss: 0.10970330238342285
-Epoch 552/1000, Loss: 0.11888570338487625
-Epoch 562/1000, Loss: 0.12270556390285492
-Epoch 572/1000, Loss: 0.11111590266227722
-Epoch 582/1000, Loss: 0.10180424153804779
-Epoch 592/1000, Loss: 0.09830482304096222
-Epoch 602/1000, Loss: 0.1251712292432785
-Epoch 612/1000, Loss: 0.10487766563892365
-Epoch 622/1000, Loss: 0.13041260838508606
-Epoch 632/1000, Loss: 0.12008911371231079
+Epoch 32/1000, Loss: 1.278242826461792
+Epoch 42/1000, Loss: 1.1435610055923462
+Epoch 52/1000, Loss: 0.9432040452957153
+Epoch 62/1000, Loss: 0.714905321598053
+Epoch 72/1000, Loss: 0.5822354555130005
+Epoch 82/1000, Loss: 0.5121979713439941
+Epoch 92/1000, Loss: 0.425785630941391
+Epoch 102/1000, Loss: 0.37741926312446594
+Epoch 112/1000, Loss: 0.3343759775161743
+Epoch 122/1000, Loss: 0.3119865655899048
+Epoch 132/1000, Loss: 0.26779788732528687
+Epoch 142/1000, Loss: 0.22297403216362
+Epoch 152/1000, Loss: 0.28504329919815063
+Epoch 162/1000, Loss: 0.22740697860717773
+Epoch 172/1000, Loss: 0.234877809882164
+Epoch 182/1000, Loss: 0.1949552297592163
+Epoch 192/1000, Loss: 0.20016708970069885
+Epoch 202/1000, Loss: 0.2028239667415619
+Epoch 212/1000, Loss: 0.173057422041893
+Epoch 222/1000, Loss: 0.21973812580108643
+Epoch 232/1000, Loss: 0.17184185981750488
+Epoch 242/1000, Loss: 0.2074703425168991
+Epoch 252/1000, Loss: 0.19310833513736725
+Epoch 262/1000, Loss: 0.2128731906414032
+Epoch 272/1000, Loss: 0.17560149729251862
+Epoch 282/1000, Loss: 0.2080163210630417
+Epoch 292/1000, Loss: 0.18244342505931854
+Epoch 302/1000, Loss: 0.17130610346794128
+Epoch 312/1000, Loss: 0.16225826740264893
+Epoch 322/1000, Loss: 0.15506717562675476
+Epoch 332/1000, Loss: 0.1312013417482376
+Epoch 342/1000, Loss: 0.14738863706588745
+Epoch 352/1000, Loss: 0.1790708303451538
+Epoch 362/1000, Loss: 0.1254740208387375
+Epoch 372/1000, Loss: 0.1862727850675583
+Epoch 382/1000, Loss: 0.17113451659679413
+Epoch 392/1000, Loss: 0.141239196062088
+Epoch 402/1000, Loss: 0.11042129248380661
+Epoch 412/1000, Loss: 0.1695185899734497
+Epoch 422/1000, Loss: 0.11782366037368774
+Epoch 432/1000, Loss: 0.14781805872917175
+Epoch 442/1000, Loss: 0.17524565756320953
+Epoch 452/1000, Loss: 0.13630664348602295
+Epoch 462/1000, Loss: 0.15702477097511292
+Epoch 472/1000, Loss: 0.11048941314220428
+Epoch 482/1000, Loss: 0.12970110774040222
+Epoch 492/1000, Loss: 0.15136636793613434
+Epoch 502/1000, Loss: 0.10564137995243073
+Epoch 512/1000, Loss: 0.14658908545970917
+Epoch 522/1000, Loss: 0.11960890889167786
+Epoch 532/1000, Loss: 0.13005761802196503
+Epoch 542/1000, Loss: 0.11053520441055298
+Epoch 552/1000, Loss: 0.11907373368740082
+Epoch 562/1000, Loss: 0.1232338398694992
+Epoch 572/1000, Loss: 0.11129128932952881
+Epoch 582/1000, Loss: 0.10171715170145035
+Epoch 592/1000, Loss: 0.09877597540616989
+Epoch 602/1000, Loss: 0.12555311620235443
+Epoch 612/1000, Loss: 0.10553622245788574
+Epoch 622/1000, Loss: 0.13101576268672943
+Epoch 632/1000, Loss: 0.1205601841211319
 Training complete!
 Embedding is saved at ./embedding.tsv
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[ 0.8851371   ,  0.016157504 ,  0.7868318   , ...,  0.5507122   ,
-        -0.037691046 , -0.085605346 ],
-       [ 0.7954141   ,  0.004558957 ,  0.7204991   , ...,  0.43139836  ,
-        -0.0423048   , -0.062028013 ],
-       [ 0.8919093   ,  0.013508907 ,  0.75929976  , ...,  0.5975924   ,
-        -0.03786699  , -0.088618495 ],
+array([[ 0.8899192 ,  0.01435345,  0.7866027 , ...,  0.5507234 ,
+        -0.03758647, -0.08572218],
+       [ 0.8003285 ,  0.00401396,  0.72124624, ...,  0.42994535,
+        -0.04228881, -0.06209074],
+       [ 0.8963664 ,  0.01202957,  0.7585074 , ...,  0.59778905,
+        -0.03772109, -0.08880965],
        ...,
-       [ 0.48230067  ,  0.01220826  ,  0.6489203   , ..., -0.0071663884,
-         0.728559    ,  0.3234069   ],
-       [ 0.5187084   ,  0.005628159 ,  0.6064961   , ..., -0.0019885437,
-         0.45722297  ,  0.19440833  ],
-       [ 0.4519184   ,  0.0027617402,  0.5260945   , ..., -0.0032663764,
-         0.6188069   ,  0.404764    ]], dtype=float32)
+       [ 0.48202616,  0.01098088,  0.6471445 , ..., -0.00690297,
+         0.73529345,  0.32098433],
+       [ 0.5201945 ,  0.00505677,  0.6052369 , ..., -0.00182656,
+         0.46181548,  0.19144082],
+       [ 0.4544619 ,  0.00249925,  0.5253095 , ..., -0.00313081,
+         0.6240246 ,  0.4014499 ]], dtype=float32)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Idenfify the spatiotemporal patterns through pseudo-Spatiotemporal Map (pSM)</span>
@@ -376,16 +376,16 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column called &#39;pspace&#39; from pSM values of cells or spots.</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column called &#39;pspace&#39; from pSM values</span>
 <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;pspace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">pSM_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a UMAP projection from SpaceFlow&#39;s embedding</span>
@@ -396,25 +396,22 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># directly using the pseudo_Spatiotemporal_Map function provided in the original github can potentially cause potential mis-picking of the root for diffusion-pseudo time</span>
-<span class="c1"># sSince this dataset contains depth_um in obs, a iroot was set to be the cell with smallest depth_um.</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since this dataset contains &#39;depth_um&#39; in obs, a iroot was set to be the cell with smallest depth_um.</span>
 <span class="c1"># For datasets without depth information, one can use the pseudo_Spatiotemporal_Map function</span>
 <span class="c1"># Here set the iroot according to &quot;depth_um&quot;</span>
 
 <span class="c1"># Select the root cell for trajectory inference based on its depth, by setting the index of the cell with the smallest &#39;depth_um&#39; value as the root</span>
 <span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;iroot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;depth_um&#39;</span><span class="p">])</span>
-<span class="c1"># Compute a diffusion map to captures the local graph structure</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">diffmap</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
-<span class="c1"># Use diffusion pseudotime (DPT) to infer a putative trajectory from the diffusion map, and assigns a pseudotime value to each cell that reflects its position along this trajectory.</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">dpt</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot spatial embedding and UMAP embedding for diffusion pseudotime and layer(label), respectively</span>
@@ -434,21 +431,21 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;X_umap&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;layer&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmp_domain</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="c1"># ax.axis(&#39;equal&#39;)</span>
+<span class="c1">#ax.axis(&#39;equal&#39;)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_UMAP_domain.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_UMAP_domain.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span><span class="n">basis</span><span class="o">=</span><span class="s1">&#39;X_umap&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dpt_pseudotime&#39;</span><span class="p">],</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">color_map</span><span class="o">=</span><span class="n">cmp_pspace</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="c1"># ax.axis(&#39;equal&#39;)</span>
+<span class="c1">#ax.axis(&#39;equal&#39;)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_UMAP_pspace.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_UMAP_pspace.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
-<br/><br/></pre></div>
+</pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -485,22 +482,20 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check whether the pseudo-spatiotemporal (dpt_pseudotime) value from infer increases according to the layer of the cortex</span>
-
-<span class="c1"># adata_use = adata[adata.obs[&#39;layer&#39;]!=&#39;VISp_wm&#39;]</span>
 <span class="n">adata_use</span> <span class="o">=</span> <span class="n">adata</span>
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">adata_use</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;layer&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;dpt_pseudotime&#39;</span><span class="p">,</span><span class="n">palette</span> <span class="o">=</span> <span class="n">adata_use</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;layer_colors&#39;</span><span class="p">],</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_violin.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_violin.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
-<br/></pre></div>
+</pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -516,7 +511,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span>
@@ -524,7 +519,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -579,8 +574,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>1093.752193</td>
       <td>VISp_VI</td>
       <td>1</td>
-      <td>0.911057</td>
-      <td>0.903116</td>
+      <td>0.911279</td>
+      <td>0.903298</td>
     </tr>
     <tr>
       <th>20023</th>
@@ -597,8 +592,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>1139.629730</td>
       <td>VISp_VI</td>
       <td>4</td>
-      <td>0.891059</td>
-      <td>0.881497</td>
+      <td>0.892462</td>
+      <td>0.882942</td>
     </tr>
     <tr>
       <th>20024</th>
@@ -615,8 +610,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>1066.880345</td>
       <td>VISp_VI</td>
       <td>1</td>
-      <td>0.928269</td>
-      <td>0.922105</td>
+      <td>0.928142</td>
+      <td>0.921913</td>
     </tr>
     <tr>
       <th>20025</th>
@@ -633,8 +628,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>1143.373530</td>
       <td>VISp_VI</td>
       <td>4</td>
-      <td>0.895433</td>
-      <td>0.886377</td>
+      <td>0.895546</td>
+      <td>0.886348</td>
     </tr>
     <tr>
       <th>20027</th>
@@ -651,8 +646,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>1119.019231</td>
       <td>VISp_VI</td>
       <td>3</td>
-      <td>0.908025</td>
-      <td>0.900265</td>
+      <td>0.909229</td>
+      <td>0.901504</td>
     </tr>
     <tr>
       <th>...</th>
@@ -687,8 +682,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>333.538252</td>
       <td>VISp_II/III</td>
       <td>4</td>
-      <td>0.712385</td>
-      <td>0.516408</td>
+      <td>0.715771</td>
+      <td>0.520664</td>
     </tr>
     <tr>
       <th>230186</th>
@@ -705,8 +700,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>286.855966</td>
       <td>VISp_II/III</td>
       <td>2</td>
-      <td>0.700709</td>
-      <td>0.506723</td>
+      <td>0.703140</td>
+      <td>0.509154</td>
     </tr>
     <tr>
       <th>230187</th>
@@ -723,8 +718,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>243.621417</td>
       <td>VISp_II/III</td>
       <td>0</td>
-      <td>0.779494</td>
-      <td>0.602101</td>
+      <td>0.783840</td>
+      <td>0.606285</td>
     </tr>
     <tr>
       <th>230188</th>
@@ -741,8 +736,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>260.900559</td>
       <td>VISp_II/III</td>
       <td>0</td>
-      <td>0.724525</td>
-      <td>0.527561</td>
+      <td>0.727675</td>
+      <td>0.530846</td>
     </tr>
     <tr>
       <th>230192</th>
@@ -759,8 +754,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
       <td>298.913498</td>
       <td>VISp_II/III</td>
       <td>0</td>
-      <td>0.718266</td>
-      <td>0.532035</td>
+      <td>0.720848</td>
+      <td>0.534821</td>
     </tr>
   </tbody>
 </table>
@@ -768,7 +763,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adata_use</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;layer_colors&#39;</span><span class="p">]</span>
@@ -776,7 +771,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -785,11 +780,10 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check whether the pseudo-spatiotemporal (dpt_pseudotime) from infer was correlated with their depth_um (depth_um)</span>
-
 <span class="n">adata_use</span> <span class="o">=</span> <span class="n">adata</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;depth_um&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;dpt_pseudotime&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adata_use</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;layer&#39;</span><span class="p">,</span>
                   <span class="n">palette</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">adata_use</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;layer_colors&#39;</span><span class="p">]),</span>
@@ -801,7 +795,7 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
 <span class="n">g</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_jointplot.png&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
 <span class="c1"># plt.savefig(f&#39;../figures/pspace/BaristaSeq_{si}_jointplot.pdf&#39;,bbox_inches=&#39;tight&#39;,transparent=True,dpi=400)</span>
-<br/></pre></div>
+</pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -818,8 +812,8 @@ pseudo-Spatiotemporal Map(pSM) calculation complete, pSM values of cells or spot
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="Reproducibility%20with%20original%20data%20%28seqFISH%29.html" class="btn btn-neutral float-left" title="Reproducibility with original data (seqFISH)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="../SOView/SOView.html" class="btn btn-neutral float-right" title="SOView" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Reproducibility%20with%20original%20data%20%28DLPFC%29.html" class="btn btn-neutral float-left" title="Reproducibility with original data (DLPFC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Spatial%20data%20integration/Spatial%20data%20integration.html" class="btn btn-neutral float-right" title="Spatial data integration" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

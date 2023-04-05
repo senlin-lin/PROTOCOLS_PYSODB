@@ -47,17 +47,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <p class="caption" role="heading"><span class="caption-text">Tutorial:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Alignment/Alignment.html">Alignment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Deconvolution/Deconvolution.html">Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Integration/Integration.html">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SOView/SOView.html">SOView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene%20detection/Spatially%20variable%20gene%20detection.html">Spatially variable gene detection</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Spatial%20clustering.html">Spatial clustering</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Reproducibility with original data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Import-packages-and-set-configurations">Import packages and set configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-SOBD">Streamline development of loading spatial data with SOBD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Data-processing">Data processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Streamline-development-of-loading-spatial-data-with-Pysodb">Streamline development of loading spatial data with Pysodb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Data-preprocessing">Data preprocessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Constructing-the-spatial-network">Constructing the spatial network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Running-STAGATE">Running STAGATE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Spatial-Clustering">Spatial Clustering</a></li>
@@ -65,9 +62,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data.html">Application with new data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Application%20with%20new%20data%20%283D%29.html">Application with new data (3D)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Spatially%20variable%20gene/Spatially%20variable%20gene.html">Spatially variable gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Pseudo-spatiotemporal%20analysis/Pseudo-spatiotemporal%20analysis.html">Pseudo-spatiotemporal analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20integration/Spatial%20data%20integration.html">Spatial data integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20data%20alignment/Spatial%20data%20alignment.html">Spatial data alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spatial%20spot%20deconvolution/Spatial%20spot%20deconvolution.html">Spatial spot deconvolution</a></li>
 </ul>
 
         </div>
@@ -97,16 +98,16 @@
              
   <section id="Reproducibility-with-original-data">
 <h1>Reproducibility with original data<a class="headerlink" href="#Reproducibility-with-original-data" title="此标题的永久链接"></a></h1>
-<p>This tutorial demonstrates how to identify spatial domains on 10x Visium data using SODB and STAGATE based on pyG (PyTorch Geometric) framework.</p>
+<p>This tutorial demonstrates how to identify spatial domains on 10x Visium human dorsolateral prefrontal cortex data using Pysodb and STAGATE based on pyG (PyTorch Geometric) framework.</p>
 <p>A reference paper can be found at <a class="reference external" href="https://www.nature.com/articles/s41467-022-29439-6">https://www.nature.com/articles/s41467-022-29439-6</a>.</p>
-<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://stagate.readthedocs.io/en/latest/T1_DLPFC.html">https://stagate.readthedocs.io/en/latest/T1_DLPFC.html</a>. At the same time, the way of loadding data is modified by using SODB.</p>
+<p>This tutorial refers to the following tutorial at <a class="reference external" href="https://stagate.readthedocs.io/en/latest/T1_DLPFC.html">https://stagate.readthedocs.io/en/latest/T1_DLPFC.html</a>. At the same time, the way of loadding data is modified by using Pysodb.</p>
 <section id="Import-packages-and-set-configurations">
 <h2>Import packages and set configurations<a class="headerlink" href="#Import-packages-and-set-configurations" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the Python warnings module to filter and ignore any warnings that may occur in the program after this point.</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Python warnings module to filter and ignore any warnings that may occur in the program after this point.</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
@@ -127,8 +128,6 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1"># os is a package for interacting with the operating system, such as reading or writing files</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="c1"># sys is a package for interacting with the Python interpreter</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 </pre></div>
 </div>
 </div>
@@ -155,18 +154,16 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The location of R (used for the mclust clustering)</span>
-<span class="c1"># os.environ[&#39;R_HOME&#39;] = &#39;/home/&lt;usr_name&gt;/anaconda3/envs/&lt;environment_name&gt;/lib/R/&#39;</span>
-<span class="c1"># os.environ[&#39;R_USER&#39;] = &#39;/home/&lt;usr_name&gt;/anaconda3/envs/&lt;environment_name&gt;/lib/R/rpy2&#39;</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;R_HOME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/linsenlin/anaconda3/envs/stagate38/lib/R/&#39;</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;R_USER&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/linsenlin/anaconda3/envs/stagate38/lib/R/rpy2&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;R_HOME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/&lt;usr_name&gt;/anaconda3/envs/&lt;environment_name&gt;/lib/R/&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;R_USER&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/home/&lt;usr_name&gt;/anaconda3/envs/&lt;environment_name&gt;/lib/R/rpy2&#39;</span>
 </pre></div>
 </div>
 </div>
 </section>
-<section id="Streamline-development-of-loading-spatial-data-with-SOBD">
-<h2>Streamline development of loading spatial data with SOBD<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-SOBD" title="此标题的永久链接"></a></h2>
+<section id="Streamline-development-of-loading-spatial-data-with-Pysodb">
+<h2>Streamline development of loading spatial data with Pysodb<a class="headerlink" href="#Streamline-development-of-loading-spatial-data-with-Pysodb" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pysodb package</span>
@@ -178,7 +175,7 @@
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialization</span>
@@ -199,22 +196,6 @@
 <span class="n">adata</span> <span class="o">=</span> <span class="n">sodb</span><span class="o">.</span><span class="n">load_experiment</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span><span class="n">experiment_name</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-download experiment[151676] in dataset[maynard2021trans]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 121M/121M [01:03&lt;00:00, 2.00MB/s]
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -248,13 +229,13 @@ AnnData object with n_obs × n_vars = 3460 × 33538
 </pre></div></div>
 </div>
 </section>
-<section id="Data-processing">
-<h2>Data processing<a class="headerlink" href="#Data-processing" title="此标题的永久链接"></a></h2>
+<section id="Data-preprocessing">
+<h2>Data preprocessing<a class="headerlink" href="#Data-preprocessing" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the index unique by appending a number string to each duplicate index element</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure that the variable names (i.e., the column names in the .var DataFrame) are unique</span>
 <span class="n">adata</span><span class="o">.</span><span class="n">var_names_make_unique</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -278,47 +259,11 @@ AnnData object with n_obs × n_vars = 3460 × 33538
 WARNING: adata.X seems to be already log-transformed.
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the annotation</span>
-<span class="n">Ann_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/home/linsenlin/protocols/sc/stagate/STAGATE_pyG/data/151676_truth.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">Ann_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a [&#39;Ground Truth&#39;] column from the &#39;Ground Truth&#39; column in the &#39;Ann_df&#39;.</span>
-<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ann_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs_names</span><span class="p">,</span> <span class="s1">&#39;Ground Truth&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a spatial plot using the image specified in the &#39;hires&#39; key and coloring the plot based on the &#39;Ground Truth&#39; column.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">img_key</span><span class="o">=</span><span class="s2">&quot;hires&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_18_0.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_18_0.png" />
-</div>
-</div>
 </section>
 <section id="Constructing-the-spatial-network">
 <h2>Constructing the spatial network<a class="headerlink" href="#Constructing-the-spatial-network" title="此标题的永久链接"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use &quot;STAGATE_pyG.Cal_Spatial_Net&quot; to calculate a spatial graph with a radius cutoff of 150.</span>
@@ -342,14 +287,14 @@ The graph contains 20052 edges, 3460 cells.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_20_1.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_20_1.png" />
+<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_17_1.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_17_1.png" />
 </div>
 </div>
 </section>
 <section id="Running-STAGATE">
 <h2>Running STAGATE<a class="headerlink" href="#Running-STAGATE" title="此标题的永久链接"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a STAGATE model</span>
@@ -370,14 +315,14 @@ Size of Input:  (3460, 3000)
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1000/1000 [00:06&lt;00:00, 144.71it/s]
+100%|██████████| 1000/1000 [00:06&lt;00:00, 145.57it/s]
 </pre></div></div>
 </div>
 </section>
 <section id="Spatial-Clustering">
 <h2>Spatial Clustering<a class="headerlink" href="#Spatial-Clustering" title="此标题的永久链接"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the nearest neighbors in the &#39;STAGATE&#39; representation and computes the UMAP embedding.</span>
@@ -387,7 +332,7 @@ Size of Input:  (3460, 3000)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Mclust_R to cluster cells in the &#39;STAGATE&#39; representation into 7 clusters.</span>
@@ -419,12 +364,12 @@ fitting ...
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the adjusted rand index (ARI) between the &#39;mclust&#39; and the &#39;Ground Truth&#39;.</span>
 <span class="n">obs_df</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">ARI</span> <span class="o">=</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">obs_df</span><span class="p">[</span><span class="s1">&#39;mclust&#39;</span><span class="p">],</span> <span class="n">obs_df</span><span class="p">[</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">])</span>
+<span class="n">ARI</span> <span class="o">=</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">obs_df</span><span class="p">[</span><span class="s1">&#39;mclust&#39;</span><span class="p">],</span> <span class="n">obs_df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adjusted rand index = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">ARI</span>)
 </pre></div>
 </div>
@@ -434,16 +379,16 @@ fitting ...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Adjusted rand index = 0.60
+Adjusted rand index = 0.62
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a plot of the UMAP embedding colored by both a mclust and a ground truth.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mclust&quot;</span><span class="p">,</span> <span class="s2">&quot;Ground Truth&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STAGATE (ARI=</span><span class="si">%.2f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI</span>, &quot;Ground Truth&quot;])
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mclust&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STAGATE (ARI=</span><span class="si">%.2f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI</span>, &quot;Region&quot;])
 </pre></div>
 </div>
 </div>
@@ -451,16 +396,16 @@ Adjusted rand index = 0.60
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_27_0.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_27_0.png" />
+<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_24_0.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_24_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the result using mclust and Ground Truth.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mclust&quot;</span><span class="p">,</span> <span class="s2">&quot;Ground Truth&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STAGATE (ARI=</span><span class="si">%.2f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI</span>, &quot;Ground Truth&quot;])
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mclust&quot;</span><span class="p">,</span> <span class="s2">&quot;Region&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STAGATE (ARI=</span><span class="si">%.2f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="k">ARI</span>, &quot;Region&quot;])
 </pre></div>
 </div>
 </div>
@@ -468,14 +413,14 @@ Adjusted rand index = 0.60
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_28_0.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_28_0.png" />
+<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_25_0.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_25_0.png" />
 </div>
 </div>
 </section>
 <section id="Spatial-trajectory-inference-(PAGA)">
 <h2>Spatial trajectory inference (PAGA)<a class="headerlink" href="#Spatial-trajectory-inference-(PAGA)" title="此标题的永久链接"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -486,7 +431,7 @@ Adjusted rand index = 0.60
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -495,41 +440,41 @@ Adjusted rand index = 0.60
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exclude any cells with missing values in the &#39;Ground Truth&#39; column of the observation metadata.</span>
-<span class="n">used_adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">])]</span>
+<span class="n">used_adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">])]</span>
 <span class="n">used_adata</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 View of AnnData object with n_obs × n_vars = 3431 × 33538
-    obs: &#39;in_tissue&#39;, &#39;array_row&#39;, &#39;array_col&#39;, &#39;Region&#39;, &#39;leiden&#39;, &#39;Ground Truth&#39;, &#39;mclust&#39;
+    obs: &#39;in_tissue&#39;, &#39;array_row&#39;, &#39;array_col&#39;, &#39;Region&#39;, &#39;leiden&#39;, &#39;mclust&#39;
     var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;, &#39;highly_variable_rank&#39;, &#39;variances&#39;, &#39;variances_norm&#39;
-    uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;, &#39;Ground Truth_colors&#39;, &#39;Spatial_Net&#39;, &#39;mclust_colors&#39;
+    uns: &#39;hvg&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;log1p&#39;, &#39;moranI&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;spatial&#39;, &#39;spatial_neighbors&#39;, &#39;umap&#39;, &#39;Spatial_Net&#39;, &#39;mclust_colors&#39;, &#39;Region_colors&#39;
     obsm: &#39;X_pca&#39;, &#39;X_umap&#39;, &#39;spatial&#39;, &#39;STAGATE&#39;
     varm: &#39;PCs&#39;
     obsp: &#39;connectivities&#39;, &#39;distances&#39;, &#39;spatial_connectivities&#39;, &#39;spatial_distances&#39;
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use PAGA to infer differentiation trajectories.</span>
-<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">paga</span><span class="p">(</span><span class="n">used_adata</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;Ground Truth&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">paga</span><span class="p">(</span><span class="n">used_adata</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare partition-based graph abstraction (PAGA) results.</span>
@@ -540,7 +485,7 @@ View of AnnData object with n_obs × n_vars = 3431 × 33538
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -552,7 +497,7 @@ View of AnnData object with n_obs × n_vars = 3431 × 33538
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_33_1.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_33_1.png" />
+<img alt="../_images/Spatial_clustering_Reproducibility_with_original_data_30_1.png" src="../_images/Spatial_clustering_Reproducibility_with_original_data_30_1.png" />
 </div>
 </div>
 </section>
