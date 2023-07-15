@@ -24,6 +24,7 @@ Protocols - Streamline development of spatial omics analysis tools using SODB!
    Spatial data integration/Spatial data integration
    Spatial data alignment/Spatial data alignment
    Spatial spot deconvolution/Spatial spot deconvolution
+   Extend to other omics/Extend to other omics
    
    
    
